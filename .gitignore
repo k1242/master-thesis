@@ -1,0 +1,16 @@
+
+*.sublime-project
+
+*.sublime-workspace
+
+*.aux
+
+*.log
+
+*.out
+
+*.gz
+
+*.synctex
+
+*.toc

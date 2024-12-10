@@ -1,0 +1,21 @@
+
+
+\textbf{Camera based balancing}. Поставив камеру в схему \red{(добавить схему pizza slice, указать камеру)} с flip-mirrow, для $\vc{a} \in [0.7, 1.0]^n$, где $n$ это количество твизеров, мы можем измерить пары $(\vc{a},\, \vc{p})$ для восстановления $F$. Аналогично \eqref{LinReg:freq2pos} по $a,\, p$ можем восстановить $F'_{ji},\, F''_{j i_{1} i_{2}}, \, \ldots$ \red{(ссылка на код)}. \red{(таблица с результатами: $R^2$, relative rmse для массивов разных размеров)}.
+
+
+\textbf{Step plots}. Повторяя схему эксперимента deterministic state preparation для массива атомов, можем измерить step plots для всех атомов \red{(добавить step plot)}. Так как нам не нужно различать на каждой отдельной фотографии количество атомов, достаточно ориентироваться на photon count. Этот способ хоть и подвержен большим флуктуациям, по сранению с atom count, является более устойчивым и не имеет свободных параметром image processing. Изменяя tweezer spill power $\sub{x}{sp}$, получим характерные step plots.  Параметры step plot можно определить by fitting sigmoid function
+\begin{equation*}
+	\sigmoid(x) = \frac{A_j}{1 + \exp(-(x-x_j) / \sigma_j)},
+\end{equation*}
+а именно $x_j$ -- центры sigmoid. Camera based balancing enough to achieve $\std(x_j) / \mean (x_j) = 2\%$ for $4\times4$ tweezer array \red{(добавить таблицу с результатами camera based balancing: std($x_j$)/mean($x_j$))}. Однако для улучшения балансировки удобно произвести итеративное улучшение \grey{(ссылка на prinston)} на основе feedback loop. 
+
+\textbf{Feedback loop}. Балансировку удобно делать в чувствительной области, а именно в точку где мы видим в среднем $0.5$ атомов, что соответсвует photon counts $A_j/2$.  После предварительной camera based balancing мы находимся в диапозоне $\sub{x}{sp} - x_j \ll x_j$. Во время feedback loop будем ориентироваться на режим, где каждая сигмоида can be approximated by linear dependence
+\begin{equation*}
+	\sigmoid(x)|_{x \in [-4 \sigma_j, + 4 \sigma_j]} \approx \frac{A_j}{2} + \frac{A_j}{4 \sigma_j} (x - x_j).
+\end{equation*}
+На основе измеренного photon counts $y_j$ мы хотим обновить набор амплитуд $\sub{\vc{a}}{hor},\, \sub{\vc{a}}{ver}$ и tweezer spill power $\sub{x}{sp}$. 
+\begin{equation*}
+	s_j = 1 + \gamma \left(\frac{1}{2} - \frac{y_j}{A_j}\right) \frac{4 \sigma_j}{p_j}.
+	% можно замерить среднее на \bar{\sigma}
+\end{equation*}
+Через \eqref{uv-decomposition} получаем обновленные значения $\sub{x}{sp}$, $\sub{\vc{a}}{hor}$, $\sub{\vc{a}}{ver}$.

@@ -1,0 +1,31 @@
+
+Описанное в этой секции можно обобщить, как model-based control. Я хочу отметить, что изначально подходил к этой задачи через model-free control, например через Stochastic Local Search (SLS) \grey{(добавить ссылку)}. У SLS есть явные плюсы: gradient-free (можем работать с любыми функциями), memory-free (устойчива в отличие от model-based подходов к изменению в установке во время оптимизации). Но конкретно для нас преимущества model-based подхода явно перевешивали все недостатки. 
+
+
+\textbf{Tweezer array control (1D)}. Для управление AOD критично знать функцию $F$, которую для фиксированных частот удобно разложить по Тейлору
+\begin{equation*}
+	p_j = F_j(\vc{a}) = \cancel{F_j(\vc{0})} + F'_{ji} a_i  + \tfrac{1}{2} F''_{j i_1 i_2} a_{i_1} a_{i_2} + \ldots
+\end{equation*}
+Что соответсвует просто линейной регрессии \red{(добавить пример crosstalk matrix $F'_{ij}$)} с полиномиальными fetures. В диапазоне \red{сделать введение про амплитуды} от 0.7 до 1.0 достаточно \red{(добавить таблицу с $R^2$ score и relative error для различных степеней)} сохранить линейные и квадратичные слагаемые. Константна остутсвет, так как $F(\vc{0}) = 0$. 
+
+
+
+\textbf{Tweezer array control (2D)}. Расположив two tweezers ортогонально друг за другом \red{(ссылка на схему)}, можно получить двухмерный массив атомов, результирующая мощность которого может быть записана в виде тензорного произведения $p_{ij} = u_i v_j$. Факторизацию output power легко проверить через
+\begin{equation*}
+	p \overset{\mathrm{SVD}}{=} U \Lambda V\T = \textstyle \sum_j \lambda_j \vc{u}_j \vc{v}_j\T,
+	\hspace{10 mm} 
+	\text{factorisability} = \lambda_0 / \tr \Lambda
+\end{equation*}
+c естественной мерой факторизуемости \red{(добавить графики, демонстрирующией факторизуемость)}. 
+
+В дальнейшем пригодится более more explicit factorisation $p$. Будем искать факторизацию в виде $p_{ij} = \lambda u_i v_j$. Для этого выберем нормировку $\vc{u}$, $\vc{v}$ такую, что $\sum_i u_i = \sum_j v_j = 1$. Тогда можем явно выразить факторизацию
+\begin{equation}
+	\textstyle
+	\frac{1}{\lambda} \sum_j p_{ij} = u_i \sum_j v_j = u_i,
+	\hspace{5 mm} 
+	\frac{1}{\lambda} \sum_i p_{ij} = v_j \sum_i u_i = v_j,
+	\hspace{5 mm} 
+	\sum_{ij} p_{ij} = \lambda.
+	\label{uv-decomposition}
+\end{equation}
+На практике удобно зафиксировать среднее значение амплитуд $\langle \sub{\vc{a}}{hor} \rangle$ и $\langle \sub{\vc{a}}{ver} \rangle$, управляя $\lambda$ c помощью общего AOM \red{(ссылка на схему)}. Таким образом задача управления системы из двух ортогональных AOD факторизуется до отдельного управления двумя AOD.
