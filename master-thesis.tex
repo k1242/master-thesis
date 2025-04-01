@@ -1,0 +1,100 @@
+\documentclass[twoside]{article}
+
+\input{settings/packages}
+\input{settings/environments}
+\input{settings/colors}
+\input{settings/commands}
+\input{settings/header}
+\input{settings/symbols}
+
+\begin{document}
+
+\input{settings/set}
+
+
+
+
+\input{settings/heading}
+
+ 
+Ещё было бы здорово добавить картинки
+
+\begin{itemize}
+	\item Демонстрация с Random Unitaries (Xinyi тезис)
+	\item Схема установки, фото 3D mot
+	\item BEC
+	\item ? Feshbach resonance
+	\item Imaging: Эксперимент. Alternating beams (с осциллографа), разница двух облачков (один, два continous, два alternating)
+	\item Imaging: histogram noise vs atoms, raw nuvu img
+	\item MWM (simulation, ? observed)
+	\item Flashing. Экспериментальная установка, табличка с её параметрами
+	\item State preparation: spilling. Схематичное изображение (посмотреть в Heidelberg thesis). Step plot. 
+	\item State preparation: схема подготовки site- and spin- resolved состояния.
+	\item Стабилизация: итерации стабилизации для single-value feedback
+	\item Theory: описание fermi-hubbard, фазовая диаграмма (посмотреть coepsill)
+	\item Theory: термализация vs локализация для решётки 8x8
+	\item Theory: вклад от лабиринтов в локализацию
+	\item Tweezer Array. Схема AOD, crosstalk basics
+\end{itemize}
+
+
+
+\section{Single-atom spin resolved free space imaging}
+
+\subsection{Experimental setup}
+\input{parts/imaging-setup}
+
+\subsection{SSH Model}
+\input{parts/ssh_model}
+
+\subsection{Image Processing}
+\input{parts/processing}
+
+
+
+\section{Tweezer Array}
+
+\subsection{Experimental setup}
+\input{parts/tweezer-setup}
+
+\subsection{Generating with AODs}
+\input{parts/generating_tw_arr}
+
+\subsection{Control}
+\input{parts/controlling_tw_arr}
+
+\subsection{Balancing}
+\input{parts/balancing_tw_arr}
+
+\subsection{State preparation}
+\input{parts/prep_tw_arr}
+
+
+
+\section{Fermi-Hubbard Model}
+
+\subsection{Introduction}
+\input{parts/fh-model-intro}
+
+\subsection{Code}
+\input{parts/fh-model-code}
+
+
+\section{Appendix}
+
+% \newpage
+% \input{parts/tmp}
+
+\subsection{Image Processing}
+\input{parts/add}
+
+\subsection{Boolean Decomposition}
+\input{parts/bool-dec}
+
+\bibliographystyle{plain}
+\bibliography{master-thesis.bib}
+
+
+\end{document}
+
+
