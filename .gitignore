@@ -15,3 +15,13 @@
 *.synctex
 
 *.toc
+
+*.fls
+
+*.fbl_latexmk
+
+*.bbl
+
+*.blg
+
+*.pyc
