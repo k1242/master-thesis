@@ -18,10 +18,10 @@
 
 *.fls
 
-*.fbl_latexmk
-
 *.bbl
 
 *.blg
 
 *.pyc
+
+master-thesis.fdb_latexmk

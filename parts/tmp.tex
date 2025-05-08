@@ -1,61 +1,210 @@
-(добавить кликабельные ссылки через href)
-
-Statement of Interest
-
-% intro
-Я заинтересован в проведении PhD-исследований в лаборатории IOL, поскольку её направления идеально совпадают с моими научными интересами и навыками: применение ML-методов для решения математических задач (AI4Science), численные методы для моделирования квантовых многочастичных систем, а также подходы на основе выпуклой оптимизации, в частности алгоритмы Франка-Вольфа.
-
-% project I
-У меня есть два значимых исследовательских достижения, релевантных для проектов IOL. Первое связано с разработкой метода на основе машинного обучения, который позволил впервые успешно исследовать графы Кэли достаточно большой размерности, что начал собираться кубик Рубика 5x5 (около 10^70 вершин). Этот подход стал state-of-the-art (превзойдя все соответствующие на Kagle решения по средней длине по кубикам 3x3, 4x4, 5x5), и подтвердил перспективность ML-методов в решении задач дискретной оптимизации. Этот опыт непосредственно связан с проектами IOL в области оптимизации, такими как улучшение хроматических оценок плоскостей.
-
-% project II: BMF, FW-alg, model-based control -> !
-Второе значимое достижение связано с моей магистерской диссертацией, в рамках которой я разработал набор методов для эффективной подготовки произвольных квантовых состояний с разрешением по положению и спину в решётке для квантовых симуляторов. Предложенные мной протоколы основываются на model-based control. Они включали методы выпуклой оптимизации, обеспечив заселение проивзольных фермионных мод (sit and spin resolved deterministic state preparation) квантовых состояний. Этот опыт особенно близок проекту IOL по использованию алгоритмов Франка-Вольфа. В целом лаборатория в которой работаю, возникла вокруг идеи детекции запутанности, что перекликается с проектом IOL.
-
-% some general experience description
-Также у меня имеется опыт численных симуляций квантовых многочастичных систем, таких как эволюция модели Ферми-Хаббарда с помощью методов на основе Крылов-подпространств и построение фазовых диаграмм с помощью алгоритмов DMRG. Я проявляю большой интерес к проектам лаборатории по симуляции открытых квантовых систем и использованию Tensor Networks для моделирования квантовых цепочек и схем. Мой опыт в области GPU-программирования и распараллеленных вычислений будет полезен для дальнейших исследований лаборатории, связанных с высокопроизводительными вычислениями.
-
-% свои идеи
-Кроме этого, у меня есть несколько конкретных идей, которые я хотел бы реализовать в рамках PhD в IOL:
-Применение методов машинного обучения для направления случайных блужданий по flip-graphs с целью поиска оптимальных или близких к оптимальным схем матричных операций и тензорных разложений.
-Развитие подходов, объединяющих достижения FermiNet и Tensor Networks, для моделирования многочастичных фермионных и других сложных квантовых систем.
-Разработка алгоритмов и методик для эффективной декомпозиции квантовых схем с использованием подходов MPO, что позволит существенно упростить численные расчёты и реализацию экспериментальных схем.
-Создание и тестирование протоколов детекции запутанности с использованием алгоритмов Франка-Вольфа для различных платформ квантовых симуляторов.
-Вообще понятно как обучать модель решать кубо задачи. Сначала для х находим непрерывной оптимизацией Q, и так формируем датасет. А затем делаем дистилляцию ошибки. 
-
-- А ещё симметрии это важно. Так они и в оценке чисел Гротендика помогли, и для флип-графов. 
-- Хорошо, когда можем легко сгенерировать охапку решений. 
-- Здорово, когда можем потихоньку это решение портить и пытаться это откатить.
-
-!!!!!!!!!!!!!!!!
-- Для QUBO решение обратной задачи, это уже просто непрерывная оптимизация, что можно делать эффективно. Так что можно для случайного x, эффективно находить Q такое что x = argmax xᵀQx. И теперь можем обучать модель по Q предсказывать x.  
-- Да, это не панацея, но мне кажется любопытным направлением. Не нужно предсказывать x сразу, пусть скорее модель предсказывает а какие пиксели в х скорее всего нужно поменять, и затем на её основе делать отжиг или parallel tempering. 
-!!!!!!!!!!!!!!!!
-
-% Plans
-В долгосрочной перспективе я планирую заниматься исследовательской деятельностью, как в ведущих научных центрах, так и рассматриваю создание собственной исследовательской группы с направлением AI4Science. Мне важно в рамках PhD глубже разобраться в фундаментальных аспектах, приобрести опыт проведения самостоятельных исследований, а также научиться управлять проектами, организовывать совместные исследования и руководить научной группой. Лаборатория IOL является для меня идеальным местом для реализации этих целей, поскольку здесь сосредоточен уникальный опыт в прикладной математике, машинном обучении и численных методах, идеально соответствующий моим амбициям и навыкам.
-
-% call to action
-Буду рад возможности обсудить конкретные идеи проектов и начать сотрудничество с вашей лабораторией.
 
 
 
 
-Хочу расти дальше. Закончил ресеарч фазу в этой компании, два продукта готовы. 
-Лучше фокусировать на личной мотивации, мне важны задачи, продолжать исследование. 
-Есть дополнительные вопросы, больше деталей. Должно быть кристально ясно. В STAR рассказать как есть. 
-At the beginning I have this situation. 
-My Task. My actions. Больше деталей.
-A did this actions.
+
+\newpage
 
 
-Ставить точки. 
 
-В качестве development хорошо указывать курсы, конференции.
 
-Про мотивацию давать примеры. 
 
-Hi Dmytro, I saw that you liked my GitHub repo—appreciate it! I’m curious, how did you find it?
+\begin{figure}[h]
+    \centering
+    \addletter{140}{a}
+    \includegraphics{fig-ai/ssh-scheme.pdf}
+    \hfill
+    \addletter{140}{b}
+    \includegraphics{fig-py/ssh-model.pdf}
+    \caption{
+        \textbf{Momentum-space dynamics in the SSH model}. 
+        a) Atoms undergo momentum-changing transitions via couplings $\Omega_1$ and $\Omega_2$, realizing a SSH-like quantum walk.
+        b) Momentum distributions over time for different beam configurations: single beam (left) shows small shift; two continuous beams (middle) result in fast spreading; alternating beams (right) suppress spread.
+    }
+    \label{fig:sshmodel}
+\end{figure}
 
-Hi Dmytro, I saw that you liked my GitHub repo—appreciate it! I’m curious, how did you find it?
 
-Also I’m looking into quantum circuit decomposition probles, and I’d love to hear what challenges you find most pressing there.
+\begin{figure}[h]
+    \centering
+    \addletter{125}{a}
+    \includegraphics{fig-py/imaging-hist.pdf}
+    \hfill
+    \addletter{125}{b}
+    \includegraphics{fig-py/imaging-base.pdf}
+    \caption{
+        \textbf{Single-atom identification and image processing.}
+        a) Histogram of peak intensities extracted from binarized and low-pass filtered images shows a bimodal distribution: the first peak corresponds to camera noise (black), the second corresponds to single atoms (red). The dashed line indicates the threshold used for atom identification.
+        b) Image processing pipeline: Raw fluorescence image (left), binarization by intensity thresholding (center), and application of a low-pass filter (right) to reveal spatially localized atomic signals. 
+        % \red{Для (a) можно добавить fit, показав что иногда случаются и два атома.}
+    }
+    \label{fig:imaging-base}
+\end{figure}
+
+
+
+\newpage
+
+\begin{figure}[h]
+    \centering
+    \addletter{200}{a}
+    \includegraphics{fig-ai/li-levels-base.pdf}
+    \hspace{1cm}
+    \addletter{200}{b}
+    \includegraphics{fig-ai/li6-zeeman-broken-ai.pdf}
+    \caption{
+        \textbf{${}^6$Li energy levels}. 
+        a) Level diagram of the ground and excited states of ${}^6$Li \cite{gehm_preparation_2003}, including the D1 and D2 transitions around $\lambda = 671$~nm. 
+        b) Zeeman splitting of the hyperfine levels of the $2\, {}^2\mathrm{S}_{1/2}$ and $2\, {}^2\mathrm{P}_{2/2}$ in ${}^6$Li \cite{serwane_deterministic_2011, sibalic_arc_2017}. As different spin states for physics we consider state $\ket{1}$ and $\ket{2}$, but for imaging it is worth to flip them to stretched states $\ket{6}$, $\ket{3}$. Colored lines indicate transitions driven by radiofrequency (RF) and microwave (MW) fields.
+    }
+    \label{fig:li6levels}
+\end{figure}
+
+
+\begin{figure}[h]
+    \centering
+    \includegraphics{fig-py/imaging-spin-resolved.pdf}
+    \caption{
+        \textbf{Spin-resolved single-atom imaging.}
+        Spatially separated $\sigma_+$ and $\sigma_-$ fluorescence is imaged onto two distinct regions of the camera. The binarization step identifies photon counts above a threshold, followed by a low-pass filter to extract spatially localized signals. Final spin states are assigned based on relative signal strength in each channel:
+        \raisebox{-1pt}{\scalebox{1.5}{\textcolor{ublue}{\textbullet}}} -- $\ket{1}$, 
+        \raisebox{-1pt}{\scalebox{1.5}{\textcolor{ured}{\textbullet}}} -- $\ket{2}$, 
+        \raisebox{-1pt}{\scalebox{1.5}{\textcolor{uhole}{\textbullet}}} -- no atom.
+    }
+    % \label{fig:spin-resolved}
+\end{figure}
+
+
+
+
+\newpage
+
+\begin{figure}[h]
+    \centering
+    \addletter{130}{a}
+    \includegraphics{fig-ai/m-bec-1-joined.pdf}
+    \addletter{130}{b}
+    \includegraphics{fig-py/m-bec-2.pdf}
+    \addletter{130}{c}
+    \includegraphics{fig-py/m-bec-3.pdf}
+    \caption{
+        \textbf{Molecular Bose-Einstein condensate data.}
+        (a) Phase space density (PSD) increases as temperature decreases via evaporative cooling, indicating condensation onset. 
+        (b) Atom density profiles normalized to unit area; color encodes temperature as in (a).
+        (c) At low temperature, the profile shows a bimodal shape: a Gaussian fit to thermal wings (red dots) underestimates the central peak, revealing the mBEC component (blue area).
+    }
+    \label{fig:mbec}
+\end{figure}
+
+
+\begin{figure}[h]
+    \centering
+    % \includegraphics{fig-py/loc-therm.pdf}
+    \includegraphics{fig-ai/loc-therm.pdf}
+    \caption{
+        \textbf{Dynamical phases in a 2D Fermi-Hubbard system.} 
+        \textit{Top}: Snapshots of particle density (red) and magnetization magnitude (blue). 
+        \textit{Middle}: Time evolution of density imbalance (red) between corners and bulk, and subsystem magnetization (blue). 
+        \textit{Bottom}: Normalized entanglement entropy evolution. 
+        All results are averaged over 10 noise realizations; shaded areas indicate standard deviation across realizations.
+        Data were obtained using ED.
+        % Parameters: (a) $U=1, V=1$, (b) $U=0, V=10$, (c) $U=0.1, V=10$, (d) $U=1, V=10$.
+        % \\ \textit{Parameters:} (a) $(1,1)$, (b) $(0,10)$, (c) $(0.1,10)$, (d) $(1,10)$ for $(U,V)$.
+    }
+    \label{fig:loc-therm}
+\end{figure}
+
+ 
+
+\newpage
+
+
+
+
+\begin{figure}[h]
+    \centering
+    \addletter{195}{a} \phantom{4}
+    \includegraphics[width=0.4\textwidth]{fig-ai/flashing-distribution-scheme.pdf}
+    \hspace{10 mm} 
+    \addletter{195}{b} \phantom{4}
+    \includegraphics[width=0.4\textwidth]{imgs/flashing-distribution-img.jpg}
+
+    \addletter{90}{c}
+    \includegraphics{fig-py/flashing-oscilloscope.pdf}
+
+    \caption{
+        \textbf{Distribution board for flashing}. 
+        a) Optical layout of the board used to combine and control light for free-space imaging states $\ket{3}$ and $\ket{6}$.
+        b) Experimental implementation.
+        c) PD signal of the flashing measured on an oscilloscope (black -- a single experimental run, blue -- the standard deviation over 20 runs, red -- rise time).
+    }
+    \label{fig:flashing}
+\end{figure}
+
+
+
+
+
+
+% \begin{figure}
+%     \centering
+%     \includegraphics{fig-py/imaging-spin-resolved.pdf}
+%     \caption{
+%         \textbf{Spin-resolved single-atom imaging.}
+%         Spatially separated $\sigma_+$ and $\sigma_-$ fluorescence is imaged onto two distinct regions of the camera. The binarization step identifies photon counts above a threshold, followed by a low-pass filter to extract spatially localized signals. Final spin states are assigned based on relative signal strength in each channel:
+%         \raisebox{-1pt}{\scalebox{1.5}{\textcolor{ublue}{\textbullet}}} -- $\ket{1}$, 
+%         \raisebox{-1pt}{\scalebox{1.5}{\textcolor{ured}{\textbullet}}} -- $\ket{2}$, 
+%         \raisebox{-1pt}{\scalebox{1.5}{\textcolor{uhole}{\textbullet}}} -- no atom.
+%     }
+%     \label{fig:spin-resolved}
+% \end{figure}
+
+
+% Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+% tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+% quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+% consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+% cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+% proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+
+\newpage
+
+
+\begin{figure}[h]
+    \centering
+    \addletter{140}{a} \phantom{4}
+    \includegraphics{fig-ai/crossed-aod.pdf}
+    \hfill
+    \addletter{140}{b} \phantom{4}
+    \includegraphics{fig-ai/blank.pdf}
+    \newline
+    \phantom{42}
+    \newline
+    \addletter{100}{c} \phantom{4}
+    \includegraphics{fig-ai/blank2.pdf}
+    \caption{Эта фигура про то как управлять \cancel{миром} двумя AOD: как через ЛинРег восстановить crosstalk matrix для атомов и для камеры}
+    %\label{fig:}
+\end{figure}
+
+
+
+\newpage
+
+
+\begin{figure}[h]
+    \centering
+    \addletter{105}{a} \phantom{4}
+    \includegraphics[width=1.5in]{imgs/RF.jpg}
+    \hspace{1cm}
+    \addletter{105}{b} \phantom{4}
+    \includegraphics[width=1.5in]{imgs/MW.jpg}
+    \caption{
+        \textbf{Антенны.}
+        Тут ещё два графика про fidelity RF и MW флипов.
+    }
+    \label{fig:RFMW}
+\end{figure}
+
+
+\newpage

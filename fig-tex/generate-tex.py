@@ -6,6 +6,8 @@ latex_template = r"""
 \usepackage{braket}
 \usepackage{xcolor}
 \usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{bbm}
 
 \definecolor{cred}{rgb}{0.86, 0.08, 0.24}
 \definecolor{cblue}{rgb}{0.12, 0.56, 1.0}
@@ -35,8 +37,14 @@ latex_template = r"""
 # name = ["ket(g)", "ket(e)", "Omega1", "Omega2", "momentumhbark", "Gamma"]
 # code = [r"$\ket{\mathrm{g}}$", r"$\ket{\mathrm{e}}$", r"${\color{cblue} \Omega_1}$", r"${\color{cred} \Omega_2}$", "Momentum, $\hbar k$", r"$\Gamma$"]
 
-name = ["ket(x0)", "ket(x1)", "ket(xm)", "Udag", "U", "ket(0)", "ket(f(x))"]
-code = [r"$\ket{x_0}$", r"$\ket{x_1}$", r"$\ket{x_m}$", r"$U\D$", r"$U$", r"$\ket{0}$", r"$\ket{f(x)}$"]
+# name = ["ket(x0)", "ket(x1)", "ket(xm)", "Udag", "U", "ket(0)", "ket(f(x))"]
+# code = [r"$\ket{x_0}$", r"$\ket{x_1}$", r"$\ket{x_m}$", r"$U\D$", r"$U$", r"$\ket{0}$", r"$\ket{f(x)}$"]
+
+# name = ["mathbbm(1)", "f(x)", "checkmark"]
+# code = [r"$\mathbbm{1}$", r"$f(x)$", r"\checkmark"]
+
+name = ["loc-therm-a", "loc-therm-b", "loc-therm-c", "loc-therm-d"]
+code = [r"$U=1,\, V=1$", r"$U=0,\, V=10$", r"$U=0.1,\, V=10$", r"$U=1,\, V=10$"]
 
 for (n, c) in zip(name, code):
     tex_filename = f"{n}.tex"

@@ -11,17 +11,33 @@
 
 \input{settings/set}
 
-
-
-
 \input{settings/heading}
 
  
-Ещё было бы здорово добавить картинки
 
+\input{parts/tmp}
+
+
+% \begin{equation*}
+% 	C_i = T_{ijk} A_j B_k
+% \end{equation*}
+
+% \begin{equation*}
+% 	T_{ijk} = \sum_{r=1}^R u_i^r v_j^r w_k^r
+% \end{equation*}
+
+Ближайшие шаги:
+\begin{enumerate}
+	\item Доделать fig AOD: add crosstalk matrix, add example ov SVF (e.g. 6x6), add ЛинРег для атомов
+	\item Графики для антенн с фитом, показать fidelity
+	\item Сделать плашку с non-factorizable state preparation, add large Li imgs (see movie). Можно а-ля the Li добавлять сверху к средним картинкам расшифровку
+\end{enumerate}
+
+Можно добавить:
 \begin{itemize}
 	\item Демонстрация с Random Unitaries (Xinyi тезис)
 	\item Схема установки, фото 3D mot
+	\item ? Экспериментальная последовательность
 	\item BEC
 	\item ? Feshbach resonance
 	\item Imaging: Эксперимент. Alternating beams (с осциллографа), разница двух облачков (один, два continous, два alternating)
@@ -31,12 +47,13 @@
 	\item State preparation: spilling. Схематичное изображение (посмотреть в Heidelberg thesis). Step plot. 
 	\item State preparation: схема подготовки site- and spin- resolved состояния.
 	\item Стабилизация: итерации стабилизации для single-value feedback
-	\item Theory: описание fermi-hubbard, фазовая диаграмма (посмотреть coepsill)
+	\item \red{Theory: описание fermi-hubbard, фазовая диаграмма (посмотреть coepsill)}
 	\item Theory: термализация vs локализация для решётки 8x8
 	\item Theory: вклад от лабиринтов в локализацию
 	\item Tweezer Array. Схема AOD, crosstalk basics
 \end{itemize}
 
+\newpage
 
 
 \section{Single-atom spin resolved free space imaging}
@@ -80,10 +97,8 @@
 \input{parts/fh-model-code}
 
 
-\section{Appendix}
 
-% \newpage
-% \input{parts/tmp}
+\section{Appendix}
 
 \subsection{Image Processing}
 \input{parts/add}
@@ -96,5 +111,4 @@
 
 
 \end{document}
-
 

@@ -10,6 +10,9 @@ axes.linewidth: 0.3
 xtick.major.width: 0.3
 ytick.major.width: 0.3
 
+xtick.minor.width: 0.3
+ytick.minor.width: 0.3
+
 xtick.labelsize: 9
 ytick.labelsize: 9
 
