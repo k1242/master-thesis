@@ -1,31 +1,38 @@
-
-Описанное в этой секции можно обобщить, как model-based control. Я хочу отметить, что изначально подходил к этой задачи через model-free control, например через Stochastic Local Search (SLS) \grey{(добавить ссылку)}. У SLS есть явные плюсы: gradient-free (можем работать с любыми функциями), memory-free (устойчива в отличие от model-based подходов к изменению в установке во время оптимизации). Но конкретно для нас преимущества model-based подхода явно перевешивали все недостатки. 
-
-
-\textbf{Tweezer array control (1D)}. Для управление AOD критично знать функцию $F$, которую для фиксированных частот удобно разложить по Тейлору
+\textbf{Frequency to position mapping.}
+To extract the local intensities $P_{ij}$ from camera images, we need to determine which pixels correspond to which tweezer sites. For this purpose, we define an affine transformation from the drive frequency space $(\omega_{\mathrm{hor}}, \omega_{\mathrm{ver}})$ to image plane coordinates $(x, y)$:
 \begin{equation*}
-	p_j = F_j(\vc{a}) = \cancel{F_j(\vc{0})} + F'_{ji} a_i  + \tfrac{1}{2} F''_{j i_1 i_2} a_{i_1} a_{i_2} + \ldots
+    \vc{r} = H \vc{\omega},
+    \hspace{5 mm} \Leftrightarrow \hspace{5 mm} 
+    \begin{pmatrix}
+        x \\ y
+    \end{pmatrix} = \begin{pmatrix}
+        h_{11} & h_{12} & h_{13} \\
+        h_{21} & h_{22} & h_{23}
+    \end{pmatrix} 
+    \begin{pmatrix}
+        \sub{\omega}{hor} \\
+        \sub{\omega}{ver} \\
+        1
+    \end{pmatrix}.
 \end{equation*}
-Что соответсвует просто линейной регрессии \red{(добавить пример crosstalk matrix $F'_{ij}$)} с полиномиальными fetures. В диапазоне \red{сделать введение про амплитуды} от 0.7 до 1.0 достаточно \red{(добавить таблицу с $R^2$ score и relative error для различных степеней)} сохранить линейные и квадратичные слагаемые. Константна остутсвет, так как $F(\vc{0}) = 0$. 
-
-
-
-\textbf{Tweezer array control (2D)}. Расположив two tweezers ортогонально друг за другом \red{(ссылка на схему)}, можно получить двухмерный массив атомов, результирующая мощность которого может быть записана в виде тензорного произведения $p_{ij} = u_i v_j$. Факторизацию output power легко проверить через
-\begin{equation*}
-	p \overset{\mathrm{SVD}}{=} U \Lambda V\T = \textstyle \sum_j \lambda_j \vc{u}_j \vc{v}_j\T,
-	\hspace{10 mm} 
-	\text{factorisability} = \lambda_0 / \tr \Lambda
-\end{equation*}
-c естественной мерой факторизуемости \red{(добавить графики, демонстрирующией факторизуемость)}. 
-
-В дальнейшем пригодится более more explicit factorisation $p$. Будем искать факторизацию в виде $p_{ij} = \lambda u_i v_j$. Для этого выберем нормировку $\vc{u}$, $\vc{v}$ такую, что $\sum_i u_i = \sum_j v_j = 1$. Тогда можем явно выразить факторизацию
+Here, $H$ is a $2 \times 3$ matrix calibrated from a set of measured spot positions. For example, one can measure $\vc{r}_j$ for random frequency vectors $\vc{\omega}_j \in [\omega_{\mathrm{min}},\, \omega_{\mathrm{max}}]$, construct the matrices $\omega_{ij}$ with $i \in \{\mathrm{hor}, \mathrm{ver}\}$ and $r_{ij}$ with $i \in \{x, y\}$, and solve the least-squares problem:
 \begin{equation}
-	\textstyle
-	\frac{1}{\lambda} \sum_j p_{ij} = u_i \sum_j v_j = u_i,
-	\hspace{5 mm} 
-	\frac{1}{\lambda} \sum_i p_{ij} = v_j \sum_i u_i = v_j,
-	\hspace{5 mm} 
-	\sum_{ij} p_{ij} = \lambda.
-	\label{uv-decomposition}
+    r = H \omega,
+    \hspace{0.5cm} \Rightarrow \hspace{0.5cm}
+    r \omega^\mathrm{T} = H \omega \omega^\mathrm{T}
+    \hspace{0.5cm} \Rightarrow \hspace{0.5cm}
+    r \omega^\mathrm{T} \left(\omega \omega^\mathrm{T}\right)^{-1} = H.
+    \label{eq:linreg-freq2pos}
 \end{equation}
-На практике удобно зафиксировать среднее значение амплитуд $\langle \sub{\vc{a}}{hor} \rangle$ и $\langle \sub{\vc{a}}{ver} \rangle$, управляя $\lambda$ c помощью общего AOM \red{(ссылка на схему)}. Таким образом задача управления системы из двух ортогональных AOD факторизуется до отдельного управления двумя AOD.
+
+This transformation defines a region of interest around each tweezer, within which we compute the integrated pixel intensity after background subtraction. The resulting values are proportional to the optical powers $P_{ij}$.
+
+\textbf{Linear reconstruction.}
+The mapping from input amplitudes $\vc{a}$ to optical power is approximated by Eq.~\eqref{eq:taylerexp}. In the regime $a_i \in [0.85, 0.95]$, a linear approximation is sufficient\footnote{
+    For wider amplitude ranges, higher-order terms can be added to the model. However, this is unnecessary in the present context.
+}. We construct the Jacobian matrix $F'_{ji}$ by fitting a linear regression model to a dataset of amplitude–intensity pairs. The resulting crosstalk matrix is shown in Fig.~\ref{fig:control}b. It is approximately diagonal, with comparable diagonal entries and off-diagonal elements typically reaching up to 30\% in magnitude relative to the diagonal, due to power redistribution between neighboring tones. Crosstalk between the horizontal and vertical AODs remains negligible.
+
+The quality of the linear fit for the $4 \times 4$ array is illustrated in Fig.~\ref{fig:control}e. The total intensity (Fig.~\ref{fig:control}d) scales linearly with the average input amplitude, yielding $R^2 > 0.99$. Relative residuals are normally distributed with width $0.3\%$, confirming the applicability of the model in this range.
+
+\textbf{Power-aware optimization.}
+\grey{In the presence of limited laser power and finite AOM diffraction efficiency, we prefer solutions where all amplitudes remain close to 1. This preference can be incorporated into the optimization objective. In addition to minimizing intensity imbalance, we penalize deviations of the average amplitudes from a target value (e.g., 0.9).}

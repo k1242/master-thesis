@@ -1,30 +1,30 @@
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+\subsection{Quantum Simulation with Fermionic Tweezer Arrays}
+
+The simulation of strongly correlated quantum systems remains one of the central challenges in modern physics. While exact numerical methods have provided deep insights in one-dimensional settings, the computational cost of simulating many-body dynamics in higher dimensions grows exponentially with system size, rendering classical approaches impractical. As first envisioned by Feynman, this motivates the development of physical quantum simulators that emulate target Hamiltonians using intrinsically quantum mechanical systems. Among several available platforms, ultracold atoms in optical potentials offer an exceptionally clean and versatile environment for realizing a broad range of many-body models, including the Fermi-Hubbard model relevant for high-temperature superconductivity~\cite{esslinger_fermi-hubbard_2010, gross_quantum_2017}.
+
+In particular, fermionic atoms loaded into optical lattices have enabled the realization of the two-dimensional Fermi-Hubbard model, with site-resolved imaging revealing spin correlations and signatures of antiferromagnetic ordering~\cite{parsons_site-resolved_2016, boll_spin-_2016}. These advances highlight the power of quantum gas microscopy in exploring equilibrium properties of lattice fermions. However, conventional approaches rely on thermal loading of large ensembles into periodic potentials, which often results in uncontrolled entropy and random filling defects. As a consequence, the system is typically initialized in a thermal ensemble, and the preparation of arbitrary low-entropy many-body states remains difficult.
+
+Optical tweezer arrays offer an alternative, bottom-up approach. By providing single-site control, they allow deterministic preparation of initial states, flexible geometries, and site-selective addressing. While initially developed in the context of Rydberg atom arrays~\cite{browaeys_many-body_2020}, these platforms have recently been extended to degenerate fermions, enabling programmable few-body Fermi-Hubbard dynamics~\cite{spar_realization_2022, yan_two-dimensional_2022}. Such results position tweezer arrays as a promising architecture for scalable fermionic quantum simulators.
+
+This thesis contributes to the development of a quantum simulation platform based on ultracold fermionic $^6$Li atoms in a two-dimensional optical tweezer array. In this approach, the array is used for high-fidelity state preparation and control, while the optical lattice serves as the environment for Hamiltonian evolution. Compared to direct loading into a lattice, this separation of initialization and dynamics enables more efficient cooling, deterministic control over occupation patterns, and reduced cycle times. To support this workflow, we develop methods for spin-resolved free-space imaging, arbitrary pattern initialization via spin-selective spilling, and precise tweezer depth balancing.
+
+Looking ahead, such a platform opens the door to nonequilibrium quantum dynamics. For instance, by performing randomized local operations followed by spin-resolved measurements, one can access entanglement entropy via measurement statistics~\cite{brydges_probing_2019}. These protocols offer a practical way to characterize entanglement growth and scrambling, even in regimes where full state tomography is infeasible. Extending such techniques to fermionic systems will provide new insights into thermalization, localization, and quantum information dynamics in strongly correlated matter.
+
+In summary, this work supports the realization of a bottom-up fermionic quantum simulator by combining deterministic state preparation with single-atom, spin-resolved readout. These tools provide a foundation for studying both static and dynamical aspects of the Fermi-Hubbard model in a highly controlled setting.
 
 
-\begin{figure}
-    \centering
-    \addletter{140}{a}
-    \includegraphics{fig-ai/li-levels-base.pdf}
-    \hfill
-    \addletter{140}{b}
-    \includegraphics{fig-py/li6-zeeman.pdf}
-    \hfill
-    \addletter{140}{c}
-    \includegraphics{fig-ai/li-levels.pdf}
-    \caption{\textbf{${}^6$Li energy levels}. a) Level diagram of the ground and 2P excited states of ${}^6$Li \cite{gehm_preparation_2003}. b) Zeeman splitting of the hyperfine levels of the $2\, {}^2\mathrm{S}_{1/2}$ state in ${}^6$Li \cite{serwane_deterministic_2011, sibalic_arc_2017}. With dashed line was marked non-interacting regime for 1-2 mixture at 527 Gs. c) As different spin states for physics we consider state $\ket{1}$ and $\ket{2}$, but for imaging it is worth to flip them to close transitions.}
-    \label{fig:li6levels}
-\end{figure}
+\subsection{Thesis Outline}
 
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+This thesis describes the development of experimental and computational tools for the preparation and probing of fermionic many-body states in a programmable optical tweezer array. The overarching goal is to enable bottom-up quantum simulation of lattice models, with precise control over initial conditions and single-atom, spin-resolved readout.
 
-Добавить, что наблюдали и BEC молекулярный. RF-flip and MW-flip
+Sec.~\ref{sec:imaging} presents the implementation of spin-resolved single-atom imaging of $^6$Li in free space. The section describes the optical layout, the image processing pipeline, and introduces the Su-Schrieffer-Heeger model as a conceptual framework for understanding spin-dependent imaging dynamics.
+
+Sec.~\ref{sec:tweezer} focuses on the creation and control of two-dimensional tweezer arrays. The section begins with the optical setup and AOD control, followed by a detailed discussion of calibration procedures and tweezer depth balancing using both camera-based and atom-based feedback. A key result is the development of a spin-selective spilling technique, enabling the preparation of spin- and site-resolved occupation patterns. Arbitrary configurations are realized through iterative removal steps, formalized via boolean matrix factorization.
+
+Sec.~\ref{sec:mwm} introduces the concept of a matter-wave magnifier—a lensing scheme designed to enhance spatial resolution for future lattice imaging. Although not yet implemented experimentally, fast simulations of wavefunction propagation and Monte Carlo sampling are presented to validate the scheme.
+
+Finally, Sec.~\ref{sec:fhmodel} outlines numerical approaches for simulating Fermi-Hubbard dynamics on small lattices. The computational framework combines exact diagonalization and Krylov-based time evolution, accelerated on GPU hardware. These tools enable simulations of dynamics in the presence of noise and disorder, and serve as a theoretical reference for upcoming experimental investigations.
+
+
+% Sec.~\ref{sec:appendix} collects supporting material, including technical details of image processing and a description of the Boolean matrix factorization algorithm used for pattern optimization.
+

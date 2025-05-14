@@ -5,7 +5,7 @@ plt.style.use('thesis.mplstyle')
 from colors import red, blue, purple
 from math import log
 
-# uv_val = labels = {'ETH':(1,1), 'ETH2':(1,0.1), 'AL':(0, 10), 'MBL':(0.1, 10), 'MBL2':(1, 10)}
+# uv_val = {'ETH':(1,1), 'ETH2':(1,0.1), 'AL':(0, 10), 'MBL':(0.1, 10), 'MBL2':(1, 10)}
 data = np.load("../data/loc-therm/data.npz")
 ts = np.logspace(0, 3, 200)
 
