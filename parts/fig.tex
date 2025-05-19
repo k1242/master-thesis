@@ -127,8 +127,82 @@
 
 
 
+\newpage
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics{fig-ai/preparation.pdf}
+    \caption{
+        \textbf{Deterministic preparation via spilling.}
+        (a) Fermionic atoms are initially loaded into a tightly confined optical tweezer, forming a Fermi sea occupying the approximately 1D harmonic oscillator levels up to the Fermi energy. 
+        (b) A magnetic field gradient tilts the potential, and the trap depth is lowered such that atoms above a defined spill level tunnel out. 
+        (c) This procedure leaves a well-defined number of atoms in the lowest energy states, with a preparation fidelity of approximately 95\%. 
+        Blue and red dots denote atoms in different spin states; gray curves indicate the bound-state wavefunctions.
+    }
+    \label{fig:preparation}
+\end{figure}
+
+
+\begin{figure}[h!]
+    \centering
+    \addletter{170}{a}
+    \includegraphics{fig-py/svf-avg.pdf}
+    \addletter{170}{b}
+    \includegraphics{fig-py/svf.pdf}
+    \caption{
+        \textbf{Single-value feedback (SVF) optimization for a $6 \times 6$ tweezer array.}
+        (a) Relative deviation of effective powers $P_j$ across the array during successive SVF steps, quantified as $\mathrm{std}(P_j)/\langle P_j \rangle$. The initial point corresponds to camera-based balancing; subsequent iterations apply SVF with feedback rates $\gamma = 1/20$ and $\gamma = 1/40$. Further iterations did not yield statistically significant improvements. 
+        (b) Retrieved horizontal powers $H_i$ and vertical powers $V_j$ (top and third rows), along with corresponding deviations of driving amplitudes from their final target values, $h - h^*$ and $v - v^*$. The recovered $H$, $V$ vectors are extracted from the photon count matrix $M_{ij}$ using factorization as described in \eqref{uv-decomposition}.
+    }
+    \label{fig:svf}
+\end{figure}
+
 
 \newpage
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics{fig-ai/preparation-seq.pdf}
+    \caption{
+        \textbf{Experimental sequence for deterministic atom number preparation.} 
+        After loading a spin-balanced mixture into a crossed ODT from the MOT, we perform two-stage evaporation in the ODT. The atoms are then transferred into an optical tweezer via an adiabatic ramp. Further evaporation is carried out in the tweezer before executing the spilling procedure. Spilling takes place at 527\,G and a magnetic field gradient of 20\,G/cm to remove atoms above the spill level. The full sequence enables high-fidelity few-body preparation within a sub-2\,s cycle time. A detailed description can be found in~\cite{culemann_construction_2024}.
+    }
+    \label{fig:preparationseq}
+\end{figure}
+
+
+
+\begin{figure}[h!]
+    \centering
+    \addletter{145}{a}
+    \includegraphics{fig-py/atom-counting.pdf}
+    \phantom{4242}
+    \addletter{145}{b}
+    \includegraphics{fig-py/step-plot-2d.pdf}
+    \caption{
+        (a) Histogram of the normalized fluorescence signal after loading to the MOT, showing clear quantized peaks corresponding to integer atom numbers. The solid red line is a multi-Gaussian fit to the observed distribution. 
+        (b) Measured 2D step plot as a function of tweezer power and magnetic field gradient. Each point indicates the average atom number obtained for a given combination of parameters. This map confirms that for any spill power, a suitable magnetic gradient can be found to achieve a desired quantized atom number.
+    }
+    \label{fig:spillingadd}
+\end{figure}
+
+
+\newpage
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.5\textwidth]{imgs/tw-setup.jpg}
+    \caption{
+    \textbf{Optical setup for 2D tweezer array.} 
+    The beam path (solid orange line) includes two orthogonal AODs, a $4f$ relay, and diagnostic components. Dashed lines indicate monitoring light paths. Taken from \cite{culemann_construction_2024}.
+    }
+    \label{fig:tw-setup}
+\end{figure}
+
+
+
+\newpage
+
 
 \begin{figure}[h]
     \centering

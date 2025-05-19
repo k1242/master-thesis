@@ -1,12 +1,21 @@
-...
-
-% Чтобы через spilling подготовить произвольную матрицу $M_{ij}$ можно сделать несколько этапов выливания. Допустим мы уже подготовили единичное заполнение и хотим вылить один атом для $i=i',\ j=j'$. Тогда ослабим $u_{i'},\ v_{j'}$ так, чтобы $u_{i'} v_{j'}$ было бы меньше threshold, but $u_{i'} v_{j \neq j'}$ больше threshold. Таким образом мы удалим один единственный атом $(i', j')$. Таким образом во время вторичного spilling, ослабляя некоторые компоненты $u,v$ можем добиться того, чтобы удалить произвольный факторизуемый паттерн. 
-
-% Повторяя процесс несколько раз, можем удалить все ненужные атомы. В наивной реализации можем удалять строчка, за строчкой (или столбец за столбцом), таким образом для массива $n \times n$ we can achive arbitrary pattern with at most $n$ spilling iterations. Можем несколько формализовать этот процесс, введя binary матрицу $W_{ij}$ удаленных атомов $n \times n$, для которой $0$ значит, что атом не выливали, а $1$ значит что его вылили. Каждый процесс выливания меняет $W_{ij} \to W_{ij} + u_i v_j$ for some binary $u_i, \ v_j$ and для булевой логики: $0+0=0$, $0+1=1$, $1+1=1$. Нахождение булевой декомпозии является NP-complete задачей, более того  the bipartite dimension is NP-hard to approximate. Но нам достаточно просто немного сэкономить количество spilling итераций, оптимизация этого процесса описана в Appendix: Boolean Decomposition. 
-% % https://en.wikipedia.org/wiki/Bipartite_dimension
-
-
 % Тут хочется добавить общую последовательность эксперимента. То есть если говорю про imaging with flashing, добавим что происходит с магнитным полем и прочим важным (спросить Намана). Аналогично для state preparation, imaging.
 
-% \begin{equation*} H = - t \sum_{\langle ij\rangle, \sigma=\uparrow, \downarrow} (c\D_{i \sigma} c_{j \sigma} + \hc) + U \sum_i n_{i \uparrow} n_{i \downarrow} \end{equation*}
+% m: 40-42, 67-70
+% h: 84-86, 
 
+
+\textbf{Tweezer loading.} We begin by preparing a spin-balanced mixture in the two lowest hyperfine states, $|1\rangle$ and $|2\rangle$, using a compressed magneto-optical trap (MOT). The atoms are initially loaded into a crossed ODT, where we perform evaporative cooling. This follows closely the sequence described in~\cite{culemann_construction_2024}.
+
+After cooling, the atoms are transferred into a tightly focused optical tweezer potential. The loading process relies on the so-called \emph{dimple trick}~\cite{zurn_few-fermion_2012}, where a tightly confined but deep tweezer potential is superimposed onto the wider ODT reservoir. Because the tweezer affects only a small region of the total cloud, the global temperature $T$ remains approximately unchanged, while the local chemical potential is enhanced. In this regime, the average occupation number $\bar{n}(E_i)$ of a single-particle state $i$ with energy $E_i$ follows the Fermi-Dirac distribution:
+\begin{equation}
+    \bar{n}(E_i) = \frac{1}{e^{(E_i - \mu)/k_B T} + 1}.
+\end{equation}
+If the energy gap between the ground state $E_0$ and the Fermi energy $E_F$ is increased such that $(E_0 - E_F) / k_B \gg T$, then $\bar{n}(E_0) \rightarrow 1$. This ensures near-unity occupation of the lowest level, which provides an ideal starting point for deterministic preparation. In our experiment, this condition is achieved by ramping on the tweezer adiabatically while continuing evaporation inside the tweezer. The full loading and cooling sequence is depicted in Fig.~\ref{fig:preparationseq}.
+
+\textbf{Deterministic few-body preparation via spilling.} To isolate a well-defined number of atoms in the lowest motional states of the tweezer, we use the \emph{spilling technique}, as described in~\cite{zurn_few-fermion_2012, holten_pauli_2022}. This method relies on tilting the potential with a magnetic field gradient and reducing the trap depth to allow atoms above a threshold energy to tunnel out. 
+The resulting states are shown in Fig.~\ref{fig:preparation}. \red{See Appendix for details.}
+% The energy levels and wavefunctions of the effective 1D potential under combined optical and magnetic fields were obtained numerically using a finite-difference method and the Thomas algorithm.
+
+The spilling sequence is performed at a magnetic field of 527\,G, where the two spin states are nearly non-interacting. A magnetic field gradient of 20\,G/cm creates a linear tilt, and the tweezer power is lowered to a value that sets the spill threshold. After a short tunneling time, the trap depth is ramped back up to recapture the remaining atoms. By empirically optimizing these parameters, we achieve deterministic preparation of two atoms per tweezer with a fidelity of approximately 95\,\%. This sequence results in high-fidelity preparation within a total experimental cycle time of less than 2\,s.
+
+Стоит сказать, что система достаточно симметрична по отношению к уменьшению tweezer depth во время spilling или увеличению градиента. 

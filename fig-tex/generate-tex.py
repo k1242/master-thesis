@@ -43,8 +43,11 @@ latex_template = r"""
 # name = ["mathbbm(1)", "f(x)", "checkmark"]
 # code = [r"$\mathbbm{1}$", r"$f(x)$", r"\checkmark"]
 
-name = ["loc-therm-a", "loc-therm-b", "loc-therm-c", "loc-therm-d"]
-code = [r"$U=1,\, V=1$", r"$U=0,\, V=10$", r"$U=0.1,\, V=10$", r"$U=1,\, V=10$"]
+# name = ["loc-therm-a", "loc-therm-b", "loc-therm-c", "loc-therm-d"]
+# code = [r"$U=1,\, V=1$", r"$U=0,\, V=10$", r"$U=0.1,\, V=10$", r"$U=1,\, V=10$"]
+
+name = ["Delta-E", "80muW"]
+code = [r"$\Delta E$", r"80$\mu$W"]
 
 for (n, c) in zip(name, code):
     tex_filename = f"{n}.tex"

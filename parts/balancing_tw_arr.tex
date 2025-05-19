@@ -1,3 +1,5 @@
+\grey{Можно использовать и калибровку отдельно для каждого AOD, не задумываясь тогда про SVD. В рамках этой работы такой подход не тестировался. Хочется подчеркнуть, что подход с SVD гарантировано работает и для double AOD [ссылка], где crosstalk между двумя направлениями может быть сильнее.}
+
 Precise control over the depth of each optical tweezer is essential for preparing few-fermion systems via spilling techniques. In our setup, each tweezer is initially loaded with approximately \red{100} atoms, which are then selectively removed by ramping down the potential depth. The number of remaining atoms as a function of spill power $x_{\mathrm{sp}}$ exhibits a quantized staircase structure, reflecting the discrete energy levels of the 1D harmonic oscillator. This behavior can be characterized by a step plot~\cite{holten_pauli_2022}.
 
 \textbf{Step plot.}
@@ -16,9 +18,10 @@ To further improve uniformity, we apply an iterative atom-based feedback scheme.
     \sigmoid(x) \approx \frac{A_j}{4 \sigma_j} x - \frac{A_j x_j}{4 \sigma_j},
 \end{equation*}
 assuming $x_j \gg \sigma_j$.  In the feedback loop, we do not use the fitted sigmoid parameters directly. Instead, we measure a single photon-count matrix $M_{ij}$ and treat it as a linear proxy for the power matrix $P_{ij}$. Since the sigmoid offset $\mathrm{shift} = A_j x_j / (4 \sigma_j)$ is known from the fits, we approximate:
-\begin{equation*}
+\begin{equation}
+    \label{mp-propto}
     M_{ij} + \mathrm{shift} \propto P_{ij} = \Lambda H_i V_j.
-\end{equation*}
+\end{equation}
 We then factorize this matrix using the method introduced in \eqref{uv-decomposition} and update the amplitudes according to:
 \begin{equation*}
     h \rightarrow h + \gamma (H - H_0), \qquad
@@ -27,3 +30,5 @@ We then factorize this matrix using the method introduced in \eqref{uv-decomposi
 where $(H_0, V_0)$ is the target point, and $\gamma$ is the feedback rate. This model-free procedure avoids full sigmoid fitting and operates directly on experimental measurements.
 
 Figure~\ref{fig:stepplot}b shows the result of applying this single-value feedback (SVF) protocol to a $4 \times 4$ array. After five iterations, the relative deviation of the fitted step centers is reduced to $0.7(2)\%$, well within the plateau width (typically $\pm5\%$), enabling deterministic state preparation across the full array. \red{Add fig. with single value feedback progress.}
+
+На Fig.~\ref{fig:svf}a представлен процесс of applying SVF protocol to a $6 \times 6$ array. Коэффицинт пропорциональности в \eqref{mp-propto} равен $A/4\sigma \sim 10(1)$ (для графика выбрано среднее значение) для нашего эксперимента.
