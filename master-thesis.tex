@@ -32,17 +32,20 @@
 \section{Single-atom spin-resolved free-space imaging} \label{sec:imaging}
 % --------------------------------------------------------------------------------------
 
-\subsection{Motivation and background}
+\subsection{Motivation and background} \label{subsec:imaging-motivation}
 \input{parts/imaging-motivation} % Why single-atom imaging, SSH model as intuition
 
-\subsection{Experimental setup}
+\subsection{Experimental setup} \label{subsec:imaging-setup}
 \input{parts/imaging-setup} % Optical scheme, atom preparation, probe configuration
 
-\subsection{Image processing}
+\subsection{Image processing} \label{subsec:imaging-processing}
 \input{parts/imaging-processing} % Thresholding, noise filtering, spatial resolution
 
-\subsection{Spin-resolved detection}
+\subsection{Spin-resolved detection} \label{subsec:imaging-spin}
 \input{parts/imaging-spin} % Two-step imaging, state identification, fidelity
+
+\subsection{Conclusion} \label{subsec:imaging-conclusion}
+\input{parts/imaging-conclusion}
 
 
 \newpage
@@ -89,20 +92,20 @@
 \section{Fermi-Hubbard model: numerical approaches and simulations} \label{sec:fhmodel}
 % --------------------------------------------------------------------------------------
 
-\subsection{Motivation and experimental relevance}
+\subsection{Introduction}
 \input{parts/fh-model-intro} % What we want to simulate and why
 
-\subsection{Theoretical and numerical methods}
+\subsection{Dynamical phases}
+\input{parts/fh-model-phases} % What we want to simulate and why
+
+\subsection{Numerical methods}
 \input{parts/fh-model-methods} % ED, Krylov, entanglement
 
-\subsection{GPU-accelerated implementation}
-\input{parts/fh-model-code} % Your GPU code, performance scaling
+\subsection{Toolbox perfomance}
+\input{parts/fh-model-code} % My code: perfomance, usage
 
-\subsection{Simulations of noisy dynamics}
+\subsection{Simulation example}
 \input{parts/fh-model-dynamics} % Thermalization, Anderson/MBD localization
-
-% \subsection{Comparison to experimental observables}
-% \input{parts/fh-model-experiment} % What’s measurable, what we predict
 
 
 \newpage
@@ -118,79 +121,6 @@
 
 % \subsection{Supplementary material}
 % % \input{parts/supplement}
-
-
-
-
-
-% % --------------------------------------------------------------------------------------
-% % --------------------------------------------------------------------------------------
-% % --------------------------------------------------------------------------------------
-
-
-% \section{Introduction}
-% \input{parts/intro}
-
-
-
-% \section{Single-atom spin resolved free space imaging}
-
-% \subsection{Experimental setup}
-% \input{parts/imaging-setup}
-
-% \subsection{SSH Model}
-% \input{parts/ssh_model}
-
-% \subsection{Image Processing}
-% \input{parts/processing}
-
-
-
-% \section{Tweezer array}
-
-% \subsection{Experimental setup}
-% \input{parts/tweezer-setup}
-
-% \subsection{Generating with AODs}
-% \input{parts/generating_tw_arr}
-
-% \subsection{Control}
-% \input{parts/controlling_tw_arr}
-
-% \subsection{Balancing}
-% \input{parts/balancing_tw_arr}
-
-% \subsection{State preparation}
-% \input{parts/prep_tw_arr}
-
-
-
-
-% \section{Matter-wave magnifier}
-
-% \subsection{Experimental setup}
-
-% \subsection{Numerics}
-
-
-
-% \section{Fermi-Hubbard model}
-
-% \subsection{Introduction}
-% \input{parts/fh-model-intro}
-
-% \subsection{Code}
-% \input{parts/fh-model-code}
-
-
-
-% \section{Appendix}
-
-% \subsection{Image Processing}
-% \input{parts/add}
-
-% \subsection{Boolean Decomposition}
-% \input{parts/bool-dec}
 
 
 \newpage

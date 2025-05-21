@@ -1,4 +1,5 @@
-...
+% !TEX root = ../master-thesis.tex
+
 
 % А тут расскажу про модель, которую сделал и что мы можем в нашем эксперименте наблюдать. 
 
@@ -15,3 +16,108 @@
 % \begin{equation*}
 % S_{\max} = \ln(R_{\max}) = \ln(154) \approx 5.04.
 % \end{equation*}
+
+
+% cuda (A100):
+
+% dim=1.44 * 10^4, 28ms на создание гамильтониана;  (N_up=N_down=2)
+% 	для 100 сингулярных значения в random SVD: 24ms
+% 	ED: 3.5s на диагонализацию : + 0.8ms на вычисление psi в момент времени t; 
+% 	Krylov: 8ms на step -- получение psi в следующий момент времени; 
+
+% dim=3.3124 * 10^6, 59ms на создание гамильтониана; (N_up=N_down=4)
+% 	для 100 сингулярных значения в random SVD: 4.7s
+% 	Krylov: 17ms на step (with K=5); 33ms на step (with K=10)
+
+% dim=1.656369 * 10^8, 110ms на создание гамильтониана; (N_up=N_down=8)
+% 	Krylov: 1.06s на step (with K=5); 2.1s на step (with K=10)
+
+
+
+% cpu (Intel Xeon Gold 6330):
+
+% dim=3.3124 * 10^6, 93ms на создание гамильтониана; (N_up=N_down=4)
+% 	для 100 сингулярных значения в random SVD: 32s
+% 	Krylov: 0.708s на step (with K=5); 1.45s на step (with K=10)
+
+
+
+% \textbf{Algorithmic implementation}.
+The numerical toolbox is designed to simulate dynamics governed by the Fermi-Hubbard Hamiltonian on arbitrary lattice geometries. The Hamiltonian considered is generally given by \eqref{eq:fh-mbl}. At the core of the implementation is the compact representation of fermionic many-body states using bitwise encoding. Specifically, the occupation number of each lattice site by spin-up and spin-down fermions is stored in two separate binary integers, significantly reducing memory consumption and enhancing computational speed. Each basis state is thus represented as a pair of bit patterns, enabling rapid evaluation of physical operators via bitwise logic. The numbers of spin-up particles, $N_\uparrow$, and spin-down particles, $N_\downarrow$, are considered to be conserved.
+
+
+Performance benchmarks of the numerical toolbox were obtained on a GPU (NVIDIA A100 GPU) for a representative 4×4 lattice system. Benchmark results are summarized in Table~\ref{tab:performance}. For comparison, equivalent calculations performed on a CPU (Intel Xeon Gold 6330) were typically about 40 times slower than those performed on the GPU, underscoring the benefits of GPU acceleration.
+
+\begin{table}
+\centering
+\caption{
+\textbf{Performance benchmarks} (4×4 system, GPU NVIDIA A100).
+Execution times correspond to Krylov subspace dimension $K=10$. Columns denote particle numbers $N_\uparrow$, $N_\downarrow$, Hilbert-space dimension $\mathcal{N}$, Hamiltonian construction time $T_H$, Krylov evolution step time $T_{\mathrm{step}}$, entanglement entropy estimation time via randomized SVD $T_{\mathrm{SVD}}$, and exact diagonalization time $T_{\mathrm{ED}}$.
+}
+\begin{tabular}{ccccccc}
+\toprule
+$N_\uparrow$ & $N_\downarrow$ & $\mathcal{N}$ & $T_H$ & $T_{\mathrm{step}}$ & $T_{\mathrm{SVD}}$ & $T_{\mathrm{ED}}$ \\
+\midrule
+2 & 2 & $1.44\times10^4$ & 28 ms & 8 ms & 24 ms & 3.5 s \\
+4 & 4 & $3.31\times10^6$ & 59 ms & 33 ms & 4.7 s & N/A \\
+8 & 8 & $1.66\times10^8$ & 110 ms & 2.1 s & N/A & N/A \\
+\bottomrule
+\end{tabular}
+\label{tab:performance}
+\end{table}
+
+These benchmarks demonstrate that the numerical implementation efficiently scales to large Hilbert-space dimensions, facilitating studies of complex quantum dynamics in regimes beyond reach of exact diagonalization approaches. Krylov subspace methods, combined with optimized GPU execution, ensure that simulations remain computationally feasible even for Hilbert-space sizes on the order of $10^8$ or greater.
+
+% The Hamiltonian is constructed in three parts (kinetic, interaction, and potential terms). The kinetic (hopping) operator is constructed using an adjacency matrix defining the connectivity of the lattice. Hopping processes between sites, exploiting parity counting of intermediate occupied sites to maintain correct fermionic signs during state transitions. The interaction operator, corresponding to the on-site Coulomb repulsion $U$, is implemented by directly counting overlapping occupied sites in the spin-up and spin-down bit patterns.
+
+% Additionally, significant optimization is achieved by leveraging the sparsity of the Hamiltonian. Instead of storing and diagonalizing the Hamiltonian explicitly in full dense form, it is stored in a sparse format suitable for both exact diagonalization (ED) and iterative Krylov-based methods. The Krylov method efficiently approximates the action of the Hamiltonian operator on a state, significantly reducing memory requirements and computational time compared to full diagonalization. This allows simulations of much larger system sizes and longer evolution times.
+
+% The implementation is modular, facilitating easy adjustments or extensions, such as modifying lattice structures or introducing additional Hamiltonian terms.
+
+
+
+% To complement and guide the experimental investigations described above, a custom numerical toolbox was developed, specifically tailored for efficient and scalable simulations of real-time quantum dynamics in finite two-dimensional Fermi-Hubbard systems. The main objective of this numerical framework is to provide robust theoretical support, enabling direct comparison between numerical simulations and experimental observations. In particular, the package is optimized for the simulation of unitary quantum dynamics in large Hilbert spaces, with special attention given to computational efficiency and flexibility in system geometry and parameters.
+
+% \textbf{Structure and key optimizations.}
+% The core numerical object is the Hamiltonian class, which represents the Fermi-Hubbard Hamiltonian on arbitrary two-dimensional lattice geometries with specified parameters, including hopping amplitude $t$, on-site interaction strength $U$, and local disorder potential $V_i$hamiltonian. Internally, states are represented using compact bitwise encoding for spin-up and spin-down occupation numbers, significantly reducing memory requirements and computation time. Hamiltonian matrix elements—kinetic hopping terms, on-site interaction, and potential energies—are constructed efficiently through bitwise operations and sparse representations, enabling rapid matrix-vector multiplication without explicitly forming large matrices.
+
+% The Hamiltonian's action on wavefunctions ($\psi$) is optimized by separately handling diagonal (interaction and potential) and off-diagonal (hopping) contributions. Specifically, hopping terms are precomputed and stored in sparse formats, allowing efficient parallel execution on GPU. This sparse structure, combined with bitwise state representations, ensures both memory efficiency and computational performance, particularly crucial for large Hilbert spaces.
+
+% \textbf{Krylov-based time evolution.}
+% To simulate unitary dynamics, the Krylov subspace projection method (Lanczos-type algorithm) is employed. Instead of explicitly exponentiating the Hamiltonian, the method constructs a Krylov subspace by iteratively applying the Hamiltonian operator to the initial state. The matrix exponential is then computed within this reduced subspace, drastically reducing computational complexity. The accuracy and computational cost of the Krylov approach are controlled by the Krylov dimension parameter ($K$), typically set to around 10 steps for optimal balance between precision and speedkrylov.
+
+% \textbf{Performance benchmarks.}
+% Extensive benchmarking on high-performance GPU (NVIDIA A100) demonstrates the numerical toolbox's efficiency and scalability. Table~\ref{tab:performance} summarizes typical execution times for system initialization, Hamiltonian construction, time-evolution steps (via Krylov), and entanglement entropy calculation using randomized SVD. It highlights excellent scalability with Hilbert-space dimension ($\mathcal{N}$), making realistic simulation of experimentally relevant systems feasible. For reference, CPU performance is roughly 40 times slower.
+
+% \begin{table}
+% \centering
+% \caption{
+% \textbf{Performance benchmarks of numerical simulations.} (4×4 system, GPU NVIDIA A100)
+% Execution times listed correspond to Krylov dimension $K=10$.
+% }
+% \begin{tabular}{ccccccc}
+% \toprule
+% $N_\uparrow$ & $N_\downarrow$ & $\mathcal{N}$ & Hamiltonian construction & Krylov step & Entropy calculation (100 singular values) & ED diagonalization \\
+% \midrule
+% 2 & 2 & $1.44\times10^4$ & 28 ms & 8 ms & 24 ms & 3.5 s \\
+% 4 & 4 & $3.31\times10^6$ & 59 ms & 33 ms & 4.7 s & N/A \\
+% 8 & 8 & $1.66\times10^8$ & 110 ms & 2.1 s & N/A & N/A \\
+% \bottomrule
+% \end{tabular}
+% \label{tab:performance}
+% \end{table}
+
+% \textbf{Usage and flexibility.}
+% The toolbox is designed with modularity and ease of use in mind. Users can conveniently specify system size, particle number, lattice geometry (through adjacency matrices), interaction strength, disorder configurations, and initial states using high-level Python functions. Once defined, time evolution and measurements of observables such as particle densities $\langle n_j(t) \rangle$, local magnetization $\langle \sigma_j^z(t)\rangle$, and entanglement entropy can be performed efficiently.
+
+% \textbf{Illustrative numerical experiment.}
+% To demonstrate the toolbox capabilities, consider a specific numerical experiment aimed at distinguishing dynamical phases discussed earlier: thermalization (ETH), Anderson localization (AL), and many-body localization (MBL). Initially, spin-up and spin-down fermions are placed deterministically in opposite corners of a $4\times4$ lattice. The evolution of particle density $\langle n_j(t)\rangle$, local magnetization $\langle \sigma_j^z(t)\rangle$, and entanglement entropy is then computed, averaged over multiple disorder realizations (see Fig.~\ref{fig:loctherm}).
+
+% Tracking average particle density alone ($\langle n_j\rangle$) effectively distinguishes thermalization from localization: density rapidly homogenizes in the ETH regime, while remaining strongly localized under AL and MBL conditions. However, density alone does not clearly differentiate between AL and MBL; both appear similar, with differences becoming apparent only at intermediate disorder strengths due to interaction-induced delocalization in MBL.
+
+% In contrast, local magnetization $\langle \sigma_j^z(t)\rangle$ provides a more sensitive indicator. In Anderson localization, initial magnetization patterns persist indefinitely, whereas interactions in the MBL regime cause the spin configuration to relax despite persistent localization in particle density. Thus, magnetization dynamics clearly separates AL from MBL phases.
+
+% Similarly, the evolution of entanglement entropy exhibits markedly different behavior across phases. In the absence of interactions (AL), entanglement entropy remains bounded at short time scales. In contrast, even weak interactions lead to a characteristic logarithmic growth of entanglement entropy, indicative of MBL dynamics. In fully thermalizing systems, entanglement entropy grows rapidly and saturates at a high value determined by subsystem size and energy density.
+
+% These numerical experiments, enabled by the developed toolbox, directly inform and guide experimental observations. They highlight how carefully chosen observables, combined with deterministic state initialization, can robustly distinguish different dynamical regimes in two-dimensional Fermi-Hubbard systems, thereby linking theory, numerics, and experiment.
+

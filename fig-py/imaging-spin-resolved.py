@@ -113,5 +113,5 @@ axs[3].set_yticks([])
 axs[3].set_aspect('equal')
 
 plt.tight_layout()
-plt.savefig("imaging-spin-resolved.pdf", bbox_inches='tight')
+# plt.savefig("imaging-spin-resolved.pdf", bbox_inches='tight')
 plt.close()

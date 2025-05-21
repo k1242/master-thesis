@@ -1,1 +1,46 @@
-...
+% !TEX root = ../master-thesis.tex
+
+
+Experimental investigation of quantum many-body dynamics benefits greatly from accurate and scalable numerical modeling. In the context of disordered Fermi-Hubbard systems, such modeling helps in validating measurement protocols and benchmarking physical observables. However, simulating out-of-equilibrium dynamics in two-dimensional systems remains a formidable task due to the exponential growth of the Hilbert space with system size and the rapid entanglement generation in thermalizing regimes.
+
+To address these challenges, a numerical framework was developed in the course of this work. It supports efficient simulation of unitary dynamics in finite two-dimensional Fermi-Hubbard systems with arbitrary geometries, boundary conditions, and disorder realizations. The framework combines two complementary computational strategies:
+
+\textit{Exact diagonalization (ED).}
+For systems with Hilbert space dimension up to $\mathcal{N} \sim 10^4$, full diagonalization of the Hamiltonian $\hat{H}$ allows direct computation of all eigenvalues ${\varepsilon_j}$ and eigenstates ${\ket{E_j}}$. Time evolution of an initial state $\ket{\psi_0}$ is then given by:
+\begin{equation}
+\ket{\psi(t)} = \sum_j c_j e^{-i \varepsilon_j t} \ket{E_j}, \quad \text{with } c_j = \bk{E_j}{\psi_0}.
+\end{equation}
+This approach gives access to long-time dynamics, spectral statistics, entanglement entropy, and steady-state observables with machine precision. 
+
+\textit{Krylov-based time evolution.}
+For larger systems ($\dim \mathcal{H} \sim 10^4$–$10^9$), storing the full spectrum becomes infeasible. Instead, the time-evolution operator $e^{-i \hat{H} t}$ is approximated via Krylov subspace projection methods, such as the Lanczos or Arnoldi algorithm \cite{saad_analysis_1992,hochbruck_krylov_1997}. The idea is to construct a Krylov basis ${ \ket{\psi}, \hat{H} \ket{\psi}, \hat{H}^2 \ket{\psi}, \ldots }$ and evolve the system within this subspace:
+\begin{equation}
+\ket{\psi(t)} \approx V_m e^{-i H_K t} V_m^\dagger \ket{\psi_0},
+\end{equation}
+where $V_m$ is an orthonormal matrix spanning the Krylov subspace and $H_K$ is the projected Hamiltonian. 
+% This method allows simulation of moderately long time scales (e.g., up to $t \sim 100 / t$), depending on entanglement growth and system properties.
+
+
+The Krylov solver implemented here supports: {Fixed particle number sectors}, ensuring efficient memory usage by restricting to Hilbert space blocks with specified $(N_\uparrow, N_\downarrow)$; {Arbitrary connectivity graphs}, allowing modeling of open, periodic, or custom geometries; {GPU acceleration}, using PyTorch backends to accelerate sparse matrix-vector operations and state evolution on GPUs.
+
+% {Monitoring of observables}, including density profiles $\langle n_i(t) \rangle$, spin observables $\langle \sigma^z_i(t) \rangle$, two-point correlators, and global quantities such as imbalance or return probabilities.
+
+% \textbf{Entanglement entropy and randomized SVD.}
+An additional capability developed as part of this numerical toolbox is the estimation of bipartite entanglement entropy during the system's unitary evolution. Given a pure quantum state $|\psi(t)\rangle$, the bipartite entanglement entropy is defined via the reduced density matrix of subsystem $A$, obtained by tracing out subsystem $B$:
+\begin{equation}
+\rho_A = \tr_B |\psi(t)\rangle \langle \psi(t)|,\quad
+S(\rho_A) = -\tr(\rho_A \log \rho_A).
+\end{equation}
+For relatively small systems, it is feasible to explicitly form and diagonalize $\rho_A$ to compute the entropy exactly. However, for larger system sizes explicit storage or diagonalization of the full reduced density matrix becomes computationally prohibitive.
+
+To overcome this challenge, the numerical package employs an efficient randomized Singular Value Decomposition (SVD) algorithm \cite{halko_finding_2011} to approximate the singular values of the reshaped wavefunction. Specifically, the full many-body wavefunction $|\psi(t)\rangle$ is represented in a matrix form $\psi_{ab}$, with indices $a$ and $b$ corresponding to the states of subsystems $A$ and $B$, respectively. Using randomized SVD, one approximates the leading singular values ${\sigma_i}$ of $\psi_{ab}$, enabling efficient computation of the entanglement entropy:
+\begin{equation}
+S(\rho_A) = -\sum_i \sigma_i^2 \log(\sigma_i^2).
+\end{equation}
+This randomized approach significantly reduces computational overhead and memory requirements, allowing accurate entropy estimation even for large subsystem dimensions. The ability to efficiently track entanglement entropy is particularly valuable when distinguishing dynamical phases: for example, to differentiate Anderson localization (with limited entropy growth) from many-body localization, characterized by persistent logarithmic entropy growth over time.
+
+
+While MPS-based techniques such as time-evolving block decimation (TEBD) or DMRG-X are widely used for one-dimensional systems, they become less effective in high-dimensional systems or regimes with volume-law entanglement. In thermalizing 2D dynamics, entanglement entropy typically grows too fast for MPS methods to remain efficient. In contrast, Krylov-based methods do not rely on low entanglement and can faithfully simulate early-to-intermediate dynamics regardless of phase.
+
+
+The developed numerical toolbox allows fast, flexible, and scalable simulation of quantum dynamics in the 2D Fermi-Hubbard model. Combined with the experimental platform, it provides a reliable method for validating nonequilibrium dynamics, extracting key signatures of localization or thermalization, and guiding future measurement protocols.

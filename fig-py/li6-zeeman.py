@@ -15,6 +15,14 @@ EP32 = EP32[:, ::3]
 # ES12 = ES12[:, ::3]
 # plt.plot(EP32 * 1e-6)
 
+# j = int(527/600 * 1000)
+# print(EP32[j] * 1e-6)
+# print(ES12[j] * 1e-6)
+# d1 = ES12[j][2] - EP32[j][0]
+# d2 = ES12[j][5] - EP32[j][2]
+# print((d2-d1)*1e-6)
+
+
 fig, ax = plt.subplots(1, 1, figsize=(2, 2))
 for (j, c) in enumerate([blue, red, 'k', 'k', 'k', 'k']):
 	ax.plot(B, ES12[:, j] * 1e-9, color=c, 

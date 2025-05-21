@@ -6,7 +6,8 @@ import re
 bib_path = '../master-thesis.bib'
 keys_to_remove = {'language', 'file', 'abstract', 'note', 'keywords', 'editor'}
 chars_to_remove = {'\u2009'}
-phd_to_master = {'culemann_construction_2024', 'huang_construction_2024', 'kruip_design_2024', 'dux_optical_2023'}
+# phd_to_master = {'culemann_construction_2024', 'huang_construction_2024', 'kruip_design_2024', 'dux_optical_2023'}
+phd_to_master = {}
 
 with open(bib_path, 'r', encoding='utf-8') as f:
     content = f.read()
@@ -14,6 +15,9 @@ with open(bib_path, 'r', encoding='utf-8') as f:
 # Remove stray characters first
 for ch in chars_to_remove:
     content = content.replace(ch, '')
+
+content = content.replace("!=", "$\neq$")
+content = content.replace("{Li6}", "{$^6$Li}")
 
 def clean_and_convert(entry: str) -> str:
     """Remove unwanted fields and convert selected entry types."""
