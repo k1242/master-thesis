@@ -1,0 +1,50 @@
+% !TEX root = ../master-thesis.tex
+
+\textbf{Introduction and motivation.}
+Manipulating the internal spin state of ultracold atoms is an essential element in quantum simulation experiments, particularly for us in context of deterministic state preparation and spin-resolved imaging.
+Two widely employed methods for achieving controlled spin transitions in ultracold atomic systems are the Landau-Zener transition and coherent resonant $\pi$-pulse. The Landau-Zener approach involves adiabatically sweeping either the frequency of a driving field or the magnitude of a magnetic field across a spin-resonance. It has been widely applied due to its inherent robustness against small deviations in experimental parameters such as magnetic field fluctuations and frequency drifts. In contrast, the $\pi$-pulse method achieves spin flips by applying a resonant electromagnetic field pulse of precise duration, determined by the corresponding Rabi frequency. Although $\pi$-pulses offer considerably faster spin-flip operations, their fidelity is strongly sensitive to precise calibration of pulse duration, intensity, and frequency detuning, making them more susceptible to experimental noise and parameter instabilities.
+
+Within the context of the current experiment, spin manipulation techniques serve two primary functions. Firstly, flipping atomic spins to stretched states enhances the efficiency of spin-resolved fluorescence imaging. Secondly, selective spin flips are integral to preparation protocols such as spin-selective spilling, allowing controlled removal of atoms in specific spin states. While the Landau-Zener method provided a practical starting point during initial setup stages (mainly due to its robustness against parameter variations) the progression toward faster experimental cycles motivated a transition towards using resonant $\pi$-pulses.
+
+In the following paragraphs, the theoretical foundations of both Landau-Zener and $\pi$-pulse spin manipulation methods are described in detail. A comparative analysis then outlines their respective advantages and limitations in the presence of parameter noise, ultimately justifying the preferred choice adopted in this work.
+
+
+\textbf{Landau-Zener transition.}
+The Landau-Zener transition \cite{landau_zur_1932,zener_non-adiabatic_1997} describes the non-adiabatic transition between two quantum states when the energy separation between these states is varied linearly in time. The Hamiltonian governing the dynamics of a two-level system undergoing such a process can be expressed as:
+\begin{equation}
+H_{\text{LZ}}(t) = \frac{\hbar}{2}
+\begin{pmatrix}
+\Delta(t) & \Omega \\
+\Omega & -\Delta(t)
+\end{pmatrix},
+\label{eq:LZ_Hamiltonian}
+\end{equation}
+where $\Delta(t)$ represents the instantaneous detuning between the system resonance and the external driving field, and $\Omega$ denotes the coupling strength (Rabi frequency) between the two states. Typically, the detuning is varied linearly as $\Delta(t) = \alpha t$, with $\alpha$ defined as the rate of change of detuning.
+
+The transition probability $P_{\text{LZ}}$ between the two states, derived analytically under the assumption of a linear sweep and constant coupling, is given by the well-known Landau-Zener formula:
+\begin{equation}
+P_{\text{LZ}} = 1 - \exp\left(-\frac{\pi \Omega^2}{2\alpha}\right).
+\label{eq:LZ_probability}
+\end{equation}
+From Eq.~\eqref{eq:LZ_probability}, it follows that the transition probability depends explicitly on the ratio of the coupling strength squared, $\Omega^2$, to the rate of detuning change, $\alpha$. For slow sweeps ($\alpha \ll \Omega^2$), the system undergoes nearly complete transitions ($P_{\text{LZ}}\rightarrow1$), whereas faster sweeps result in incomplete transitions and correspondingly reduced fidelity.
+
+An important experimental advantage of the Landau-Zener method lies in its robustness against fluctuations in experimental parameters, such as variations in the magnitude of the magnetic field or the exact driving frequency. If the magnetic field is swept across a hyperfine transition, slight deviations in the magnetic field gradient or frequency tuning rate will only minimally affect the transition fidelity due to the exponential nature of Eq.~\eqref{eq:LZ_probability}. Such robustness proves particularly valuable in experimental settings, where shot-to-shot variations in magnetic field magnitude or small frequency drifts inevitably occur.
+
+% Furthermore, Landau-Zener transitions can be implemented either by sweeping the frequency of an applied microwave or radiofrequency field across the resonance or equivalently by sweeping the magnetic field, which shifts the resonant frequency via the Zeeman effect. Both approaches yield equivalent results, and the choice between them is typically dictated by experimental convenience and technical considerations related to equipment availability and stability.
+
+Despite the robustness of Landau-Zener transitions, a notable drawback is the relatively long timescale ($\sub{t}{LZ} \gg 1/\Omega$) required to achieve high transition.  In the subsequent section, a detailed discussion of the alternative approach, resonant $\pi$-pulse spin manipulation, will be presented, highlighting contrasting properties and the sensitivity of each technique to experimental noise sources.
+
+
+\textbf{Rabi $\pi$-pulse.}
+An alternative approach for inducing spin-state transitions in ultracold atomic systems is the resonant Rabi oscillation method, commonly referred to as the $\pi$-pulse technique. This method exploits coherent resonant driving of the transition between two spin states, enabling deterministic and rapid population transfer.
+
+The dynamics of a two-level quantum system under resonant excitation is described by the same Hamiltonian \eqref{eq:LZ_Hamiltonian} with implied $\Delta = \const$. Specifically, applying the driving field for the duration $t_\pi = \pi/\Omega$ with $\Delta=0$, the system undergoes a complete inversion of the spin populations, realizing a perfect spin-flip operation from state $\ket{1}$ to state $\ket{2}$, or vice versa. Main advantage is that $t_\pi \ll \sub{t}{LZ}$, main limitation is that deviations from the exact resonance condition ($\delta \neq 0$), or inaccuracies in pulse duration and field amplitude, reduce the transition fidelity. The fidelity of the spin flip under a non-zero detuning is analytically described by the generalized Rabi oscillation formula:
+\begin{equation}
+P_{\pi} = \frac{\Omega^2}{\Omega^2+\delta^2}\sin^2\left(\frac{\sqrt{\Omega^2+\delta^2}}{2}t_{\pi}\right).
+\label{eq:pi_fidelity}
+\end{equation}
+Shot-to-shot fluctuations, particularly in magnetic fields, directly introduce variations in resonance conditions, which result in systematic and random errors in the spin-flip fidelity. 
+% Consequently, achieving consistently high fidelity with $\pi$-pulses demands stringent experimental stabilization and calibration protocols.
+
+
+% In summary, the $\pi$-pulse technique enables fast, deterministic spin flips but requires high precision and stable experimental conditions. The interplay between speed, fidelity, and sensitivity to noise thus determines the appropriateness of this technique for specific experimental goals, as will be further analyzed in the subsequent comparative section.

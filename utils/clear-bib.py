@@ -52,3 +52,6 @@ with open(bib_path, 'w', encoding='utf-8') as f:
     f.write(''.join(cleaned_entries))
 
 print(f'Done.')
+
+
+# 65-72, 76-79

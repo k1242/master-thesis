@@ -6,7 +6,7 @@ from matplotlib.patches import FancyArrow
 from matplotlib.transforms import Affine2D
 import matplotlib.colors as mcolors
 plt.style.use('thesis.mplstyle')
-from colors import red, blue, purple
+from colors import red, blue, purple, uBlues, uReds
 
 delta = 0.12 # shift for doubloon
 s = 150 # size of resolved spins
@@ -43,8 +43,8 @@ img_123 = raw_img.copy()
 img_456 = img_123.copy()
 img_123[cmask_123] = np.nan
 img_456[cmask_456] = np.nan
-axs[0].matshow(img_123, vmin=0, vmax=100, cmap='Reds')
-axs[0].matshow(img_456, vmin=0, vmax=100, cmap='Blues')
+axs[0].matshow(img_123, vmin=0, vmax=100, cmap=uReds)
+axs[0].matshow(img_456, vmin=0, vmax=100, cmap=uBlues)
 axs[0].grid(False)
 axs[0].text(405, 110, 'state 123', color=red, ha="center", va="bottom", size=8, rotation=-8.8)
 axs[0].text(220, 265, 'state 456', color=blue, ha="center", va="bottom", size=8, rotation=-8.8)
@@ -113,5 +113,5 @@ axs[3].set_yticks([])
 axs[3].set_aspect('equal')
 
 plt.tight_layout()
-# plt.savefig("imaging-spin-resolved.pdf", bbox_inches='tight')
+plt.savefig("imaging-spin-resolved.pdf", bbox_inches='tight')
 plt.close()

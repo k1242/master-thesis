@@ -248,7 +248,7 @@
 
 
 
-\begin{figure}[h]
+\begin{figure}[h!]
     \centering
     \addletter{195}{a} \phantom{4}
     \includegraphics[width=0.4\textwidth]{fig-ai/flashing-distribution-scheme.pdf}
@@ -268,14 +268,15 @@
     \label{fig:flashing}
 \end{figure}
 
+\newpage
 
-\begin{figure}[h]
+\begin{figure}[h!]
     \centering
-    \addletter{105}{a} \phantom{4}
-    \includegraphics[width=1.5in]{imgs/RF.jpg}
+    \addletter{85}{a} \phantom{4}
+    \includegraphics[width=1.25in]{imgs/RF.jpg}
     \hspace{1cm}
-    \addletter{105}{b} \phantom{4}
-    \includegraphics[width=1.5in]{imgs/MW.jpg}
+    \addletter{85}{b} \phantom{4}
+    \includegraphics[width=1.25in]{imgs/MW.jpg}
     \caption{
         \textbf{RF and MW antennas used for spin control.}
         (a) PCB-based radiofrequency (RF) antenna used for driving spin transitions at MHz frequencies. 
@@ -286,6 +287,23 @@
     \label{fig:rfmw}
 \end{figure}
 
+
+\begin{figure}[h!]
+    \centering
+    \addletter{105}{a}
+    \includegraphics{fig-py/spin-flip-1.pdf}  \phantom{4}
+    \addletter{105}{b}
+    \includegraphics{fig-py/spin-flip-2.pdf}  \phantom{4}
+    \addletter{105}{c}
+    \includegraphics{fig-py/spin-flip-3.pdf}  \phantom{4}
+    \caption{
+        \textbf{Characterization of spin manipulation protocols.}
+        (a) Fluorescence signal measured in the ODT before (blue) and after (red) applying a Landau-Zener sweep between states $\ket{2}$ and $\ket{3}$, showing population transfer to the target state. 
+        (b) Final population in $\ket{2}$ as a function of sweep duration, consistent with the Landau-Zener model. 
+        (c) Rabi oscillations observed when applying resonant RF $\pi$-pulse between states $\ket{2}$ and $\ket{3}$, demonstrating coherent control of the spin transition. \red{(upd with 17.12.2024)}
+    }
+    \label{fig:spin-flip}
+\end{figure}
 
 
 
