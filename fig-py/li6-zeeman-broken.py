@@ -74,7 +74,7 @@ fig.text(0.725, 0.55, r"$\sigma_+$", va='center', ha='left', color=red)
 kwargs.update(color=cyan, head_length=0, head_width=0)
 fig.patches.append(FancyArrow(0.65, 0.216, 0.0, 0.014, **kwargs))
 kwargs.update(color=gold)
-fig.patches.append(FancyArrow(0.7, 0.205, 0.0, 0.264, **kwargs))
+fig.patches.append(FancyArrow(0.7, 0.190, 0.0, 0.264+0.0145, **kwargs))
 legend_elements = [
     Line2D([0], [0], color=cyan, lw=1.5, linestyle='-', label="RF"),
     Line2D([0], [0], color=gold, lw=1.5, linestyle='-', label="MW")

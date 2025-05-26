@@ -10,6 +10,7 @@ gold   = (0.85, 0.65, 0.13)
 
 uBlues = LinearSegmentedColormap.from_list("uBlues", [white, blue])
 uReds = LinearSegmentedColormap.from_list("uBlues", [white, red])
+uPurples = LinearSegmentedColormap.from_list("uBlues", [white, purple])
 bwr = LinearSegmentedColormap.from_list("ubwr", [(0.0, blue), (0.5, (1, 1, 1)), (1.0, red)])
 wbr = LinearSegmentedColormap.from_list("uwbr", [(0.0, white), (0.5, blue), (1, red)])
 wbrg = LinearSegmentedColormap.from_list("wbrg", [(0.0, white), (0.33, blue), (0.66, red), (1.0, gold)])

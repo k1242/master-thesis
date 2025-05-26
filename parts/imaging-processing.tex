@@ -1,5 +1,22 @@
 % !TEX root = ../master-thesis.tex
 
+
+\begin{figure}
+    \centering
+    \addletter{125}{a}
+    \includegraphics{fig-py/imaging-hist.pdf}
+    \hfill
+    \addletter{125}{b}
+    \includegraphics{fig-py/imaging-base.pdf}
+    \caption{
+        \textbf{Single-atom identification and image processing.}
+        a) Histogram of peak intensities extracted from binarized and low-pass filtered images shows a bimodal distribution: the first peak corresponds to camera noise (black), the second corresponds to single atoms (red). The dashed line indicates the threshold used for atom identification.
+        b) Image processing pipeline: Raw fluorescence image (left), binarization by intensity thresholding (center), and application of a low-pass filter (right) to reveal spatially localized atomic signals. 
+        % \red{Для (a) можно добавить fit, показав что иногда случаются и два атома.}
+    }
+    \label{fig:imaging}
+\end{figure}
+
 \textbf{Camera and detection regime.}  
 The imaging system uses a Nüvü HNü512 EMCCD camera, chosen for its high sensitivity and low noise in the few-photon regime. At $\lambda = 671$~nm, the sensor achieves a quantum efficiency (QE) of approximately 94\%~\cite{kruip_design_2024}. The camera is operated in photon counting mode with EM gain up to 5000, enabling single-atom detection from just tens of detected photons. During a typical imaging sequence, each atom emits around 300 photons, of which approximately 30 are detected on the camera after collection and transmission losses.
 

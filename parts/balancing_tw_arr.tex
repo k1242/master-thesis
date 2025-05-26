@@ -1,11 +1,14 @@
 % !TEX root = ../master-thesis.tex
 
+
+
 \grey{It is also possible to calibrate each AOD independently, without relying on an SVD-based approach. This alternative was not tested in the scope of this work. However, it is worth emphasizing that the SVD-based method is guaranteed to work even for double-AOD configurations~[ref], where crosstalk between the two directions can be significantly stronger.}
 
 Precise control over the depth of each optical tweezer is essential for preparing few-fermion systems via spilling techniques. In our setup, each tweezer is initially loaded with approximately \red{100} atoms, which are then selectively removed by ramping down the potential depth. The number of remaining atoms as a function of spill power $x_{\mathrm{sp}}$ exhibits a quantized staircase structure, reflecting the discrete energy levels of the 1D harmonic oscillator. This behavior can be characterized by a step plot~\cite{holten_pauli_2022}.
 
 \textbf{Step plot.}
-To characterize this behavior in our tweezer array, we measure step plots for all sites simultaneously. Figure~\ref{fig:stepplot}a shows the result for a $4 \times 4$ array. For each value of $x_{\mathrm{sp}}$, we acquire 70 experimental realizations and compute the average photon signal per site. This signal serves as a robust proxy for atom number. In contrast to single-atom counting, this approach is parameter-free and effective even for large initial occupancies.
+To characterize this behavior in our tweezer array, we measure step plots for all sites simultaneously. Figure~\ref{fig:stepplot}a shows the result for a $4 \times 4$ array. For each value of $x_{\mathrm{sp}}$, we acquire 70 experimental realizations and compute the average photon signal per site. 
+% This signal serves as a robust proxy for atom number. In contrast to single-atom counting, this approach is parameter-free and effective even for large initial occupancies.
 
 \textbf{Uniformity characterization.}
 To quantify depth inhomogeneity across the array, we fit each step trace with a sigmoid function:
@@ -13,6 +16,9 @@ To quantify depth inhomogeneity across the array, we fit each step trace with a 
     \sigmoid(x) = \frac{A_j}{1 + \exp\left(-(x - x_j)/\sigma_j\right)},
 \end{equation*}
 where $x_j$ denotes the center of the step and $\sigma_j$ its width for tweezer $j$. We define a relative uniformity metric as $\std(x_j) / \langle x_j \rangle$. After camera-based balancing (Sec.~\ref{subsec:control}), this metric typically yields $\sim 3\%$, which is insufficient for deterministic preparation across the array. A more precise balancing procedure is therefore required.
+
+
+
 
 \textbf{Single-value feedback.}
 To further improve uniformity, we apply an iterative atom-based feedback scheme. Rather than fitting full step plots, we operate at a single point on the slope of the transition, near the half-filling level $A_j / 2$. At this point, the sigmoid can be approximated by a linear response:
@@ -33,4 +39,4 @@ where $(H_0, V_0)$ is the target point, and $\gamma$ is the feedback rate. This 
 
 Figure~\ref{fig:stepplot}b shows the result of applying this single-value feedback (SVF) protocol to a $4 \times 4$ array. After five iterations, the relative deviation of the fitted step centers is reduced to $0.7(2)\%$, well within the plateau width (typically $\pm5\%$), enabling deterministic state preparation across the full array. \red{Add fig. with single value feedback progress.}
 
-На Fig.~\ref{fig:svf}a представлен процесс of applying SVF protocol to a $6 \times 6$ array. Коэффицинт пропорциональности в \eqref{mp-propto} равен $A/4\sigma \sim 10(1)$ (для графика выбрано среднее значение) для нашего эксперимента.
+Figure~\ref{fig:svf}a shows the process of applying the SVF protocol to a $6 \times 6$ array. The proportionality coefficient in \eqref{mp-propto} is $A/4\sigma \sim 10(1)$ (the average value is chosen for the plot) for our experiment.

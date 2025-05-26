@@ -1,6 +1,25 @@
 % !TEX root = ../master-thesis.tex
 
 
+
+
+\begin{figure}
+    \centering
+    % \includegraphics{fig-py/loc-therm.pdf}
+    \includegraphics{fig-ai/loc-therm.pdf}
+    \caption{
+        \textbf{Dynamical phases in a 2D Fermi-Hubbard system.} 
+        \textit{Top}: Snapshots of particle density (red) and magnetization magnitude (blue). 
+        \textit{Middle}: Time evolution of density imbalance (red) between corners and bulk, and subsystem magnetization (blue). 
+        \textit{Bottom}: Normalized entanglement entropy evolution. 
+        All results are averaged over 10 noise realizations; shaded areas indicate standard deviation across realizations.
+        Data were obtained using ED.
+        % Parameters: (a) $U=1, V=1$, (b) $U=0, V=10$, (c) $U=0.1, V=10$, (d) $U=1, V=10$.
+        % \\ \textit{Parameters:} (a) $(1,1)$, (b) $(0,10)$, (c) $(0.1,10)$, (d) $(1,10)$ for $(U,V)$.
+    }
+    \label{fig:loctherm}
+\end{figure}
+
 A key application of the numerical simulation toolbox developed in this work is the systematic exploration and clear identification of dynamical phases in interacting fermionic systems, described by the Fermi-Hubbard Hamiltonian. To illustrate this capability, a concrete numerical experiment is considered here, focusing on distinguishing between three distinct dynamical regimes: thermalization governed by Eigenstate Thermalization Hypothesis (ETH), Anderson localization, and many-body localization (MBL). The main motivation for this numerical investigation is to demonstrate explicitly how carefully chosen initial states and targeted observables facilitate clear experimental signatures distinguishing these different phases.
 
 \textbf{Initial state and experimental setup.}

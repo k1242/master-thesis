@@ -1,5 +1,39 @@
 % !TEX root = ../master-thesis.tex
 
+\begin{figure}
+    \centering
+    % 
+    \addletter{140}{a} 
+    \includegraphics{fig-ai/crossed-aod.pdf}
+    \hfill
+    \addletter{140}{b} 
+    \includegraphics{fig-py/crosstalk-camera.pdf}
+    % 
+    \newline
+    \phantom{42}
+    \newline
+    % 
+    \addletter{115}{c}
+    \raisebox{1cm}{\includegraphics{fig-py/crosstalk-camera-img.pdf}}
+    \phantom{42}
+    \addletter{115}{d}
+    \includegraphics{fig-py/crosstalk-camera-amp.pdf}  
+    \phantom{42}
+    \addletter{115}{e}
+    \includegraphics{fig-py/crosstalk-camera-res.pdf}
+    % 
+    \caption{
+        \textbf{Tweezer array control using orthogonal AODs.}
+        (a) Experimental setup: two orthogonal AODs generate a 2D tweezer array. The applied harmonic amplitudes $h_i$, $v_j$ define the output intensities $H_i = F_H(h)$ and $V_j = F_V(v)$ in horizontal and vertical directions, respectively. 
+        (b) Crosstalk matrix $F'$ reconstructed via linear regression from camera images, showing how modulation of one harmonic affects others. 
+        (c) Example of measured intensity distribution at uniform input amplitudes ($h_i = v_j = 0.9$), illustrating imbalance in the resulting pattern. 
+        (d) The total intensity $\Lambda = \sum_{ij} H_i V_j$ scales linearly with the mean input amplitude. 
+        (e) Residuals of the linear model (fitted in the range $[0.85, 0.95]$) are normally distributed. 
+        All data were obtained in this work using direct camera-based measurements.
+    }
+    \label{fig:control}
+\end{figure}
+
 
 Optical tweezer arrays provide a flexible platform for preparing ultracold atomic systems with site-resolved control. By trapping individual atoms in focused laser beams, it becomes possible to initialize many-body states with controlled geometry, low entropy, and tunable local parameters.
 

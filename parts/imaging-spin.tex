@@ -1,5 +1,19 @@
 % !TEX root = ../master-thesis.tex
 
+\begin{figure}
+    \centering
+    \includegraphics{fig-py/imaging-spin-resolved.pdf}
+    \caption{
+        \textbf{Spin-resolved single-atom imaging.}
+        Spatially separated $\sigma_+$ and $\sigma_-$ fluorescence is imaged onto two distinct regions of the camera. The binarization step identifies photon counts above a threshold, followed by a low-pass filter to extract spatially localized signals. Final spin states are assigned based on relative signal strength in each channel:
+        \raisebox{-1pt}{\scalebox{1.5}{\textcolor{ublue}{\textbullet}}} -- $\ket{1}$, 
+        \raisebox{-1pt}{\scalebox{1.5}{\textcolor{ured}{\textbullet}}} -- $\ket{2}$, 
+        \raisebox{-1pt}{\scalebox{1.5}{\textcolor{uhole}{\textbullet}}} -- no atom.
+    }
+    \label{fig:spin-resolved}
+\end{figure}
+
+
 \textbf{Single-shot spin resolution with spatial separation.}  
 Spin detection is implemented through a single-exposure fluorescence measurement, where the emitted light from atoms in $\ket{3}$ and $\ket{6}$ is directed to different regions of the camera. This spatial separation is achieved using a polarizing beam splitter (PBS) after the imaging objective, which splits $\sigma^+$ and $\sigma^-$ components. In our geometry, atoms in state $\ket{3}$ produce fluorescence in the upper-right region of the frame, while those in $\ket{6}$ appear in the lower-left (see Fig.~\ref{fig:spin-resolved}). The system is calibrated so that each site in the tweezer array corresponds to two fixed analysis regions—one per spin channel.
 
