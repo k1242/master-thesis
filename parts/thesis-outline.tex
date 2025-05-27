@@ -1,0 +1,15 @@
+
+\subsection{Thesis outline}
+
+This thesis describes the development of experimental and computational tools for the preparation and probing of fermionic many-body states in a programmable optical tweezer array. The overarching goal is to enable bottom-up quantum simulation of lattice models, with precise control over initial conditions and single-atom, spin-resolved readout.
+
+Sec.~\ref{sec:imaging} presents the implementation of spin-resolved single-atom imaging of $^6$Li in free space. The section describes the optical layout, the image processing pipeline, and introduces the Su-Schrieffer-Heeger model as a conceptual framework for understanding spin-dependent imaging dynamics.
+
+Sec.~\ref{sec:tweezer} focuses on the creation and control of two-dimensional tweezer arrays. The section begins with the optical setup and AOD control, followed by a detailed discussion of calibration procedures and tweezer depth balancing using both camera-based and atom-based feedback. A key result is the development of a spin-selective spilling technique, enabling the preparation of spin- and site-resolved occupation patterns. Arbitrary configurations are realized through iterative removal steps, formalized via boolean matrix factorization.
+
+Sec.~\ref{sec:mwm} introduces the concept of a matter-wave magnifier—a lensing scheme designed to enhance spatial resolution for future lattice imaging. Although not yet implemented experimentally, fast simulations of wavefunction propagation and Monte Carlo sampling are presented to validate the scheme.
+
+Finally, Sec.~\ref{sec:fhmodel} outlines numerical approaches for simulating Fermi-Hubbard dynamics on small lattices. The computational framework combines exact diagonalization and Krylov-based time evolution, accelerated on GPU hardware. These tools enable simulations of dynamics in the presence of noise and disorder, and serve as a theoretical reference for upcoming experimental investigations.
+
+
+% Sec.~\ref{sec:appendix} collects supporting material, including technical details of image processing and a description of the Boolean matrix factorization algorithm used for pattern optimization.

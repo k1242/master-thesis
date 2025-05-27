@@ -16,15 +16,20 @@
 % \input{parts/notes} \newpage
 
 
-\input{parts/fig} \newpage
+% \input{parts/fig} \newpage
 
 
 \newpage
 % --------------------------------------------------------------------------------------
 \section{Introduction} \label{sec:intro}
 % --------------------------------------------------------------------------------------
-\input{parts/intro} % Motivation, why Li-6, Fermi-Hubbard, overview of the setup, structure of thesis
+\subsection{Quantum simulation with fermionic tweezer arrays}
+\input{parts/intro-0} % Motivation, why Li-6, Fermi-Hubbard, overview of the setup, structure of thesis
 
+\subsection{The Fermi-Hubbard model} \label{subsec:exp-setup-fh}
+\input{parts/exp-setup-fh}
+
+\input{parts/thesis-outline}
 
 \newpage
 % --------------------------------------------------------------------------------------
@@ -32,12 +37,7 @@
 % --------------------------------------------------------------------------------------
 \input{parts/exp-setup}
 
-% \newpage
-\subsection{x The Fermi-Hubbard model} \label{subsec:exp-setup-fh}
-\input{parts/exp-setup-fh}
-
-\newpage
-\subsection{x Overview of experiment setup} \label{subsec:exp-setup-overview}
+% \subsection{Overview of experiment setup} \label{subsec:exp-setup-overview}
 \input{parts/exp-setup-overview}
 
 
@@ -85,17 +85,11 @@
 \subsection{Tweezer depth balancing} \label{subsec:balancing}
 \input{parts/balancing_tw_arr}
 
-\newpage
-
 \subsection{Tweezer movement} \label{subsec:tweezer-movement}
 \input{parts/tweezer_movement}
 
-\newpage
-
 \subsection{Tweezer loading} \label{subsec:tweezer-loading}
 \input{parts/tweezer_loading}
-
-\newpage
 
 \subsection{Spin-selective spilling} \label{subsec:spin-selective-spilling}
 \input{parts/spin_spilling_tw_arr}
@@ -137,19 +131,13 @@
 \input{parts/fh-model-dynamics} % Thermalization, Anderson/MBD localization
 
 
-\newpage
+% \newpage
 % --------------------------------------------------------------------------------------
-\section{Appendix} \label{sec:appendix}
+% \section{Appendix} \label{sec:appendix}
 % --------------------------------------------------------------------------------------
 
-% \subsection{Add}
-% % \input{parts/add}
-
-\subsection{x Boolean matrix factorization}
-\input{parts/bool-dec} % SAT-based exact decomposition, your results
-
-% \subsection{Supplementary material}
-% % \input{parts/supplement}
+% \subsection{x Boolean matrix factorization}
+% \input{parts/bool-dec} % SAT-based exact decomposition, your results
 
 
 \newpage

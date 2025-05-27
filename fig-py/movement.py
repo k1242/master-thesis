@@ -12,6 +12,8 @@ x_linear, y_linear, s_linear = data["x_linear"]*x_scale, data["y_linear"]/y_scal
 x_mjt, y_mjt, s_mjt = data["x_mjt"]*x_scale, data["y_mjt"]/y_scale, data["s_mjt"]/y_scale
 i0, i1, i2, i3 = data["i0"], data["i1"], data["i2"], data["i3"]
 
+print(np.stack((x_mjt, y_mjt, s_mjt * 1e2)).round(3))
+
 x_linear[0] = x_mjt[0] * 0.8
 
 fig, axs = plt.subplots(1, 2, figsize=(4,1.5))
@@ -56,10 +58,11 @@ axs[J].legend(frameon=False, fontsize=8, handletextpad=0.5, handlelength=1.5)
 
 fig.subplots_adjust(wspace=0.6)
 
-for i in range(2):
-    for j, ax in enumerate(axs):
-        ax.set_visible(i == j)
-    plt.savefig(f"movement-{i+1}.pdf", bbox_inches='tight')
+# for i in range(2):
+#     for j, ax in enumerate(axs):
+#         ax.set_visible(i == j)
+#     plt.savefig(f"movement-{i+1}.pdf", bbox_inches='tight')
 
 # plt.savefig("movement.pdf", bbox_inches='tight')
 plt.close()
+
