@@ -1,12 +1,80 @@
 % !TEX root = ../master-thesis.tex
 
-...
+\textbf{Context and Motivation.} In the context of this experimental work, deterministic preparation of atomic patterns in optical tweezer arrays is realized through sequential spilling operations, enabled by a simplified optical setup based exclusively on two orthogonal acousto-optic deflectors (AOD). Unlike more complex approaches employing spatial light modulators (SLM) or digital micromirror devices (DMD), the AOD-based setup restricts the accessible intensity patterns to products of one-dimensional horizontal and vertical profiles:
+\begin{equation*}
+P_{ij} = H_i V_j.
+\end{equation*}
 
-% Мы хотим найти разложение булевой матрицы $W_{ij}$ размера $n\times n$
-% \begin{equation*}
-% 	W_{ij} = \sum_{\lambda=1}^r u^\lambda_i v^\lambda_j,
-% \end{equation*}
-% для наименьшего булева ранга $r$ (или bipartite dimension). Всевозможных матриц $\card\{W_{ij}\} = 2^{n^2}$. Для $n \leq 5$ it about 34 miilion states, so it can be decomposed with brute force \red{(ссылка на код)}. \grey{Можно }
+Within this scheme, the removal of atoms from selected lattice sites is achieved by appropriately reducing the local tweezer intensities below a tunneling threshold, causing controlled spilling of atoms from targeted sites. Each spilling operation thus imposes a binary removal mask, which, due to the rank-1 intensity structure, factorizes into an outer product of binary vectors $u_i v_j$ where $u_i v_j=1$ corresponds to a removed atom at site $(i,j)$.
 
-% Для больших $n$ можем попробовать подход с flip graph. TBA. 
+For general state preparation tasks requiring removal patterns of higher complexity, multiple spilling steps must be applied sequentially. The cumulative removal pattern, obtained after $r$ sequential spilling operations, corresponds to a Boolean sum of rank-1 outer products:
+\begin{equation*}
+W_{ij} = \bigvee_{\lambda=1}^{r} u_i^\lambda v_j^\lambda,
+% \label{eq:ebmf}
+\end{equation*}
+with the logical OR performed element-wise. This equation defines the Exact Boolean Matrix Factorization (EBMF) of the target removal pattern $W$, and $r$ corresponds to its Boolean rank.
 
+A straightforward method to achieve any target pattern would involve sequential removal operations addressing individual rows or columns independently. Such an approach guarantees factorization for an $n\times n$ matrix in at most $n$ spilling steps. However, this naive strategy typically results in redundant steps and thus slightly extends experimental cycle times and decrease overall fidelities.
+
+% As part of this work, a more systematic approach was proposed to address this inefficiency. The main contribution involved formulating the problem of finding an optimal EBMF (specifically, one with minimal Boolean rank) as a Boolean satisfiability (SAT) problem. By translating the EBMF task into a Conjunctive Normal Form (CNF) and utilizing modern SAT solvers, optimal spilling sequences could be reliably computed for arrays of practical experimental sizes (within seconds up to approximately $10\times10$). This SAT-based method, developed and implemented within this work, reduces the number of required spilling steps, thereby potentially improving overall experimental fidelity and efficiency.
+
+
+
+\textbf{Optimal BMF as SAT.} 
+Finding the exact Boolean matrix factorization (EBMF) with minimal Boolean rank is a challenging computational task, known to be NP-complete\cite{orlin_contentment_1977} and NP-hard to approximate\cite{gruber_inapproximability_2007}. Consequently, exact solutions are generally computationally feasible only for relatively small-scale matrices. Within the scope of this thesis, an approach for obtaining optimal EBMF solutions was developed by formulating the problem as a Boolean satisfiability (SAT) task. A SAT problem involves determining whether a set of Boolean variables can satisfy a given logical expression represented in conjunctive normal form (CNF), defined as a conjunction of disjunctions (clauses).
+
+To cast the EBMF into a SAT framework, consider a binary target matrix $M \in \{0,1\}^{n\times n}$ that we aim to factorize into Boolean matrices $H\in\{0,1\}^{n\times r}$ and $W\in\{0,1\}^{r\times n}$ such that:
+\begin{equation*}
+M_{ij} = \bigvee_{k=1}^{r} H_{ik} W_{kj}.
+\end{equation*}
+Introducing auxiliary Boolean variables $Z_{ijk} = H_{ik} \wedge W_{kj}$, the above relation can be equivalently expressed as:
+\begin{equation}
+M_{ij} = \bigvee_{k=1}^{r} Z_{ijk}.
+\end{equation}
+Each auxiliary variable $Z_{ijk}$ is constrained by the logical equivalence:
+\begin{equation*}
+Z_{ijk} \leftrightarrow (H_{ik} \wedge W_{kj}),
+\end{equation*}
+which, when converted into CNF clauses, yields:
+\begin{align*}
+Z_{ijk} &\rightarrow H_{ik}: \quad (\neg Z_{ijk} \vee H_{ik}) \\
+Z_{ijk} &\rightarrow W_{kj}: \quad (\neg Z_{ijk} \vee W_{kj}) \\
+H_{ik} \wedge W_{kj} &\rightarrow Z_{ijk}: \quad (\neg H_{ik} \vee \neg W_{kj} \vee Z_{ijk}).
+\end{align*}
+
+Additionally, the entries of the target matrix $M$ impose further constraints. For every entry $M_{ij}=1$, at least one corresponding variable $Z_{ijk}$ must be true:
+\begin{equation*}
+(Z_{ij1} \vee Z_{ij2} \vee \dots \vee Z_{ijr}),
+\end{equation*}
+while for every $M_{ij}=0$, all corresponding variables must be false:
+\begin{equation*}
+\bigwedge_{k=1}^{r} (\neg Z_{ijk}).
+\end{equation*}
+
+This logical framework fully encodes the Boolean factorization into a CNF formula suitable for modern SAT solvers. Using this SAT-based formulation, the minimal Boolean rank $r$ for a given matrix $M$ can be efficiently found through iterative solution attempts, incrementally testing higher values of $r$ until the minimal factorization is obtained.
+
+In practice, employing a SAT solver (such as PycoSAT) proved efficient and reliable for arrays up to approximately $10\times 10$. This approach, developed and implemented in this thesis, enables optimal experimental sequences for atomic removal.
+% , thereby minimizing cycle times and enhancing overall preparation fidelity.
+
+
+\textbf{Performance.} To solve the formulated Boolean satisfiability (SAT) problem corresponding to the optimal Boolean matrix factorization, the PycoSAT solver was employed. The workflow consists of translating the EBMF task into conjunctive normal form (CNF) and incrementally increasing the candidate rank $r$ until the solver identifies a valid factorization. The minimal rank $r$ obtained through this procedure directly defines the minimal number of spilling steps required experimentally.
+
+
+\begin{table}
+\centering
+\caption{SAT-based EBMF performance. Computation times and average number of required spilling steps as a function of array size.}
+\begin{tabular}{ccc}
+\toprule
+Array size & Computation time & Avg. spilling steps \\
+\midrule
+$4\times 4$ & 0.6 ms & 3.1 \\
+$6\times 6$ & 3.7 ms & 4.9 \\
+$8\times 8$ & 60 ms & 6.7 \\
+$9\times 9$ & 0.31 s & 7.7 \\
+\bottomrule
+\end{tabular}
+\label{tab:sat-performance}
+\end{table}
+
+
+The computational efficiency and experimental impact of this SAT-based approach were systematically characterized by solving randomly generated binary matrices of varying dimensions. Typical solver runtimes and corresponding average number of spilling steps are summarized in Table~\ref{tab:sat-performance}. This analysis demonstrates that optimal EBMF sequences can be computed rapidly and reliably for arrays up to approximately $9 \times 9$. At the larger size of $10 \times 10$, the computational increases, resulting in solver failures in approximately 20\% of cases; hence, results for this size are not presented here. Nevertheless, within the experimentally relevant array dimensions, the developed SAT-based approach consistently reduces the required spilling steps.
