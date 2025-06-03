@@ -46,6 +46,13 @@
 \section{Single-atom spin-resolved free-space imaging} \label{sec:imaging}
 % --------------------------------------------------------------------------------------
 
+% @: Expand on the introduction to say more about why this scheme is attractive (e.g. time of flight, simple spin resolution [compare to other schemes]). Also mention some other implementations, e.g. Heidelberg, Greiner Erbium. Then go into details of our setup
+
+% @: You could also add more details, e.g. how the epxosure time, Gaussian filter etc. were chosen. Let us discuss.
+
+\subsection{? Overview} \label{subsec:imaging-overview} %  of Single-Atom Imaging Techniques
+\input{parts/imaging-overview}
+
 \subsection{Motivation and background} \label{subsec:imaging-motivation}
 \input{parts/imaging-motivation} % Why single-atom imaging, SSH model as intuition
 
@@ -69,6 +76,9 @@
 % --------------------------------------------------------------------------------------
 \section{Tweezer array system} \label{sec:tweezer}
 % --------------------------------------------------------------------------------------
+
+\subsection{? Overview} \label{subsec:state-prepation-overview}
+\input{parts/tweezer-overview}
 
 \subsection{Motivation and concept} \label{subsec:aodconcept}
 \input{parts/tweezer-motivation} % Tweezer arrays as control tool, overview
@@ -96,18 +106,6 @@
 
 \subsection{Arbitrary occupation loading} \label{subsec:arbitrary-occupation-loading}
 \input{parts/occupation_control_tw_arr}
-
-
-\newpage
-% --------------------------------------------------------------------------------------
-\section{Matter-wave magnifier} \label{sec:mwm}
-% --------------------------------------------------------------------------------------
-
-\subsection{Motivation and overview}
-\input{parts/mwm-intro} % Why MWM, conceptual summary, use cases and limitations
-
-\subsection{Numerical modeling}
-\input{parts/mwm-numerics} % Monte Carlo simulation, wavefunction evolution
 
 
 \newpage
@@ -141,8 +139,18 @@
 
 % \newpage
 
+\subsection{Matter-wave magnifier} \label{sec:mwm}
+\input{parts/mwm-intro} % Why MWM, conceptual summary, use cases and limitations
+\input{parts/mwm-numerics} % Monte Carlo simulation, wavefunction evolution
+
 \subsection{Determinantal Point Processes}
 \input{parts/dpp} 
+
+
+% \newpage
+
+\subsection{\red{Some data}}
+\input{parts/add}
 
 
 \newpage
@@ -151,3 +159,5 @@
 
 
 \end{document}
+
+

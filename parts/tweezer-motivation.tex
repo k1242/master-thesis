@@ -1,5 +1,19 @@
 % !TEX root = ../master-thesis.tex
 
+
+Optical tweezer arrays provide a flexible platform for preparing ultracold atomic systems with site-resolved control. By trapping individual atoms in focused laser beams, it becomes possible to initialize many-body states with controlled geometry, low entropy, and tunable local parameters.
+
+In our setup, a two-dimensional array of tweezers is created using two orthogonal acousto-optic deflectors (AODs). Each AOD diffracts multiple beams along one axis, and their intersection forms the full array. The resulting intensity at site $(i,j)$ factorizes as $P_{ij} = H_i V_j$, where $H_i$ and $V_j$ are set by the drive amplitudes applied to each AOD. This structure simplifies calibration and allows fast control of the entire array using a small number of parameters.
+
+Compared to holographic or lattice-based approaches, the AOD system offers rapid reconfigurability and independent control of individual traps. This enables preparation of custom spin and density patterns, as well as dynamic manipulation during the experimental sequence. Such capabilities are useful, for example, for initializing specific configurations, removing defects, or performing spatially selective operations before loading atoms into an optical lattice for further evolution.
+
+\textbf{AOD operation.} Each AOD consists of a crystal driven by a piezoelectric transducer. An incoming laser beam $(\vc{k}_{\mathrm{in}}, \omega_{\mathrm{in}})$ interacts with the induced acoustic wave $(\vc{q}, \Omega)$ via Bragg diffraction, producing an outgoing beam $(\vc{k}_{\mathrm{out}}, \omega_{\mathrm{out}})$:
+\begin{equation*}
+    \vc{k}_{\mathrm{out}} = \vc{k}_{\mathrm{in}} + \vc{q}, \qquad \omega_{\mathrm{out}} = \omega_{\mathrm{in}} + \Omega.
+\end{equation*}
+The frequency $\Omega$ determines the deflection angle $\theta$ through the Bragg condition, while the amplitude of the RF signal controls the diffracted optical power. Each RF tone can be described by a triple $(\Omega_j, a_j, \varphi_j)$, corresponding to its frequency, amplitude, and phase. Applying a set of such tones to an AOD results in a superposition of multiple diffracted beams, with the amplitude $a_j$ determining the power in each beam and the phase $\varphi_j$ influencing their relative coherence.
+
+
 \begin{figure}
     \centering
     % 
@@ -34,18 +48,6 @@
     \label{fig:control}
 \end{figure}
 
-
-Optical tweezer arrays provide a flexible platform for preparing ultracold atomic systems with site-resolved control. By trapping individual atoms in focused laser beams, it becomes possible to initialize many-body states with controlled geometry, low entropy, and tunable local parameters.
-
-In our setup, a two-dimensional array of tweezers is created using two orthogonal acousto-optic deflectors (AODs). Each AOD diffracts multiple beams along one axis, and their intersection forms the full array. The resulting intensity at site $(i,j)$ factorizes as $P_{ij} = H_i V_j$, where $H_i$ and $V_j$ are set by the drive amplitudes applied to each AOD. This structure simplifies calibration and allows fast control of the entire array using a small number of parameters.
-
-Compared to holographic or lattice-based approaches, the AOD system offers rapid reconfigurability and independent control of individual traps. This enables preparation of custom spin and density patterns, as well as dynamic manipulation during the experimental sequence. Such capabilities are useful, for example, for initializing specific configurations, removing defects, or performing spatially selective operations before loading atoms into an optical lattice for further evolution.
-
-\textbf{AOD operation.} Each AOD consists of a crystal driven by a piezoelectric transducer. An incoming laser beam $(\vc{k}_{\mathrm{in}}, \omega_{\mathrm{in}})$ interacts with the induced acoustic wave $(\vc{q}, \Omega)$ via Bragg diffraction, producing an outgoing beam $(\vc{k}_{\mathrm{out}}, \omega_{\mathrm{out}})$:
-\begin{equation*}
-    \vc{k}_{\mathrm{out}} = \vc{k}_{\mathrm{in}} + \vc{q}, \qquad \omega_{\mathrm{out}} = \omega_{\mathrm{in}} + \Omega.
-\end{equation*}
-The frequency $\Omega$ determines the deflection angle $\theta$ through the Bragg condition, while the amplitude of the RF signal controls the diffracted optical power. Each RF tone can be described by a triple $(\Omega_j, a_j, \varphi_j)$, corresponding to its frequency, amplitude, and phase. Applying a set of such tones to an AOD results in a superposition of multiple diffracted beams, with the amplitude $a_j$ determining the power in each beam and the phase $\varphi_j$ influencing their relative coherence.
 
 
 \textbf{Factorized intensity distribution.} 

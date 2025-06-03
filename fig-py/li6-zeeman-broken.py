@@ -61,7 +61,7 @@ fig.text(0.93, 0.16, "$-1/2$", va='center', size=8)
 
 # axis label
 fig.text(-0.1, 0.5, "Energy, GHz", va='center', rotation='vertical')
-ax2.set_xlabel("Magnetic field, Gs")
+ax2.set_xlabel("Magnetic field, G")
 
 # fluorescence
 kwargs = dict(transform=fig.transFigure, width=0.002, head_width=0.02, head_length=0.02, length_includes_head=True, color=red)
