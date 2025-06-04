@@ -8,18 +8,18 @@
 
 \textbf{Thermalization}.
 A fundamental question in quantum many-body physics concerns how and under which conditions an isolated quantum system approaches thermal equilibrium. Intuitively, thermalization implies that after sufficient evolution time, local observables lose memory of the system's initial conditions and approach steady-state values corresponding to thermodynamic equilibrium \cite{khlebnikov_thermalization_2014}. To formalize this concept, consider an isolated quantum system described by a Hamiltonian $\hat{H}$, evolving from an initial state $\ket{\psi_0}$, which can be expanded in the eigenbasis ${\ket{E_j}}$ of the Hamiltonian with eigenenergies $\varepsilon_j$ as follows:
-\begin{equation}
+\begin{equation*}
 \ket{\psi(t)} = \sum_{j=1}^{\mathcal{N}} c_j e^{- i \varepsilon_j t} \ket{E_j},
 \label{eq:evolution}
-\end{equation}
+\end{equation*}
 where the coefficients are $c_j = \bk{E_j}{\psi_0}$, and $\mathcal{N} = \dim\mathcal{H}$ is the dimension of the Hilbert space.
 
 For an arbitrary observable $\hat{A}$, its expectation value at time $t$ is given by:
-\begin{equation}
+\begin{equation*}
 A(t) = \bk{\psi(t)}[\hat{A}]{\psi(t)}
 = \sum_{j,k} \bar{c}k c_j e^{-i (\varepsilon_j - \varepsilon_k) t} \bk{E_k}[\hat{A}]{E_j}.
 \label{eq:observable_time}
-\end{equation}
+\end{equation*}
 Expanding this further, one separates diagonal and off-diagonal contributions:
 \begin{equation}
 A(t) = \sum_j |c_j|^2 \bk{E_j}[\hat{A}]{E_j}
@@ -28,21 +28,21 @@ A(t) = \sum_j |c_j|^2 \bk{E_j}[\hat{A}]{E_j}
 \end{equation}
 
 Thermalization at large times, $t \gg \tth$, implies that the observable reaches a steady-state value $A(E)$ with small fluctuations around this average, where $E = \bk{\psi_0}[\hat{H}]{\psi_0}$ is the initial energy of the system:
-\begin{equation}
+\begin{equation*}
 A(t \gg \tth) = A(E) + \text{small fluctuations}.
 \label{eq:thermal_limit}
-\end{equation}
+\end{equation*}
 
 Analyzing Eq. \eqref{eq:At_expanded}, the condition for small fluctuations around a steady-state value requires the off-diagonal matrix elements $\bk{E_k}[\hat{A}]{E_j}$, $k\neq j$, to be sufficiently small. Indeed, due to the large number of off-diagonal terms ($\sim \mathcal{N}^2$), their contributions could, in principle, sum up to large fluctuations. To suppress such fluctuations, one typically assumes these off-diagonal matrix elements to be negligible or effectively random, scaling as $1/\sqrt{\mathcal{N}}$.
 
 Furthermore, to ensure that the steady-state expectation value $A(E)$ does not depend sensitively on initial conditions, one additional criterion is necessary: the diagonal elements $\bk{E_j}[\hat{A}]{E_j}$ must vary smoothly with energy:
-\begin{equation}
+\begin{equation*}
 \bk{E_j}[\hat{A}]{E_j} \approx A(\varepsilon_j),
-\end{equation}
+\end{equation*}
 where $A(\varepsilon)$ is a continuous and smooth function of energy $\varepsilon$. Under these assumptions, if the initial state $\ket{\psi_0}$ occupies energy eigenstates within a sufficiently narrow energy window $\Delta E$, such that the variation $\partial_E A(E)\Delta E$ is small, we can approximate:
-\begin{equation}
+\begin{equation*}
 A(t \gg \tth) \approx \sum_j |c_j|^2 A(\varepsilon_j) \approx A(E).
-\end{equation}
+\end{equation*}
 
 The conditions described above constitute the Eigenstate Thermalization Hypothesis (ETH), first introduced by Deutsch \cite{deutsch_quantum_1991} and later developed by Srednicki \cite{srednicki_chaos_1994}. ETH thus posits that individual eigenstates of chaotic quantum many-body systems already encode thermal equilibrium properties, and as long as the system's initial state overlaps with sufficiently many such eigenstates within a narrow energy band, observables will dynamically thermalize at large times.
 
