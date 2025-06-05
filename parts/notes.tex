@@ -16,7 +16,7 @@
 	\item ? добавить в chapter 6 про добавки с finite size к термализации из эргодического бассейна
 	% \item ? MWM
 	% \item BMF as SAT task
-	\item ? Написать про добавки к obj function в линейной модели
+	% \item ? Написать про добавки к obj function в линейной модели
 	
 	% \item Atom based measurements: SVF, , atom-based crosstalk (and comparison)
 	
@@ -35,29 +35,29 @@
 
 
 \begin{itemize}
-	\item ! Make a sketch:  splitter (PBS) after the objective, which directs $\sigma\pm$ components to different regions of the detector (see Fig. 7).
-	\item ! That needs to be justified, there could be couplings between H and V (via the angle of the beams entering the second AOD)
+	% \item ! Make a sketch:  splitter (PBS) after the objective, which directs $\sigma\pm$ components to different regions of the detector (see Fig. 7).
+	% \item ! That needs to be justified, there could be couplings between H and V (via the angle of the beams entering the second AOD)
 	\item ? Spin-selective spilling (You should also sketch the potential for both spin states. Hard to understand otherwise)
 	\item ? Схема стабилизации лазеров, какие отстройки, какие частоты, в контексте imaging
 	% \item Single atom counting
-	\item Демонстрация с Random Unitaries (Xinyi тезис)
-	\item Схема установки, фото 3D mot
+	% \item Демонстрация с Random Unitaries (Xinyi тезис)
+	% \item Схема установки, фото 3D mot
 	% \item BEC
-	\item Imaging: разница двух облачков (один, два continous, два alternating)
+	% \item Imaging: разница двух облачков (один, два continous, два alternating)
 	% \item Imaging: histogram noise vs atoms, raw nuvu img
 	% \item Flashing. Экспериментальная установка, табличка с её параметрами
 	% \item State preparation: spilling. Схематичное изображение (посмотреть в Heidelberg thesis).
 	% \item ? Экспериментальная последовательность
-	\item ? Feshbach resonance
+	% \item ? Feshbach resonance
 	% \item ? loading issues
-	\item ? MWM (simulation, observed)
-	\item ? Theory: описание fermi-hubbard, фазовая диаграмма (посмотреть coepsill)
-	\item ? Theory: вклад от лабиринтов в локализацию
+	% \item ? MWM (simulation, observed)
+	% \item ? Theory: описание fermi-hubbard, фазовая диаграмма (посмотреть coepsill)
+	% \item ? Theory: вклад от лабиринтов в локализацию
 	% \item ? 2D Step Plot
 \end{itemize}
 
 
-
+По функционалу наиболее близкая реализация есть в QuSpin (поддерживающий и ED и Krylov evol), однако он не поддерживает GPU. К тому же Я могу позволить себе больщую оптимизацию под мою задачу, в силу меньшей общности -- это влияется на то как реалиазуется действие sparse гамильтониана и на то как хранится psi. Ещё в quspin на сколько знаю нет реализации для low rank randomized SVD, что нужно для вычисления энтропиии запутанности.
 
 
 % Huang: 17-25

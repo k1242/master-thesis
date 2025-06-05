@@ -3,7 +3,7 @@
 
 
 
-\textbf{Site-resolved and spin-resolved imaging in Fermi-Hubbard physics.}
+% \textbf{Site-resolved and spin-resolved imaging in Fermi-Hubbard physics.}
 The experimental realization of strongly correlated quantum systems using ultracold atomic gases in optical lattices has become a versatile platform for quantum simulation \cite{esslinger_fermi-hubbard_2010,gross_quantum_2017}. The Fermi-Hubbard model provides a framework for understanding high-temperature ,superconductivity, quantum magnetism, and exotic phases of matter. However, extracting meaningful information about complex phenomena in these systems requires detection techniques that can probe the system at the microscopic level.
 
 Single-site resolution is essential for studying physics in optical lattices. Traditional detection methods measure only integrated quantities such as total particle number or momentum distribution, providing limited insight into spatial correlations and local properties \cite{gross_quantum_2021}. Quantum gas microscopy enables direct observation of individual atoms at specific lattice sites \cite{bakr_quantum_2009,sherson_single-atom-resolved_2010}. This capability has proven valuable for measuring key observables in correlated systems, including density-density correlations, charge fluctuations, and the characterization of different phases.
@@ -43,6 +43,7 @@ The integration of additional detection capabilities, such as spin resolution, i
 % ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 % ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+
 \textbf{Spin-resolved detection for Raman imaging.}
 The extension of quantum gas microscopy to include spin resolution represents a significant technical challenge, particularly when integrated with Raman sideband cooling protocols. While Raman cooling imaging provides excellent spatial resolution and detection fidelity, the addition of spin selectivity requires careful consideration of how different internal atomic states interact with the imaging and cooling light fields. Several approaches have been developed to achieve spin-resolved detection while maintaining the advantages of Raman cooling.
 
@@ -62,6 +63,18 @@ While the approach demonstrated in \cite{koepsell_robust_2020} represents perhap
 % ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
+
+\begin{figure}
+    \centering
+    \includegraphics{fig-ai/spin-proc.pdf}
+    \caption{
+	\textbf{Spin-resolved fluorescence imaging setup.} 
+	Atoms in states $\ket{3}$ (red) and $\ket{6}$ (blue) are illuminated by alternating flashing beams to suppress recoil-induced diffusion. Fluorescence photons emitted by the atoms are collected by a high-NA (0.65) objective, split by a polarizing beam splitter (PBS), and imaged onto distinct regions of an EMCCD camera, enabling single-shot spin resolution. Inset: representative fluorescence raw image.
+	}
+    \label{fig:spin-proc}
+\end{figure}
+
+
 \textbf{Free-space imaging.} Free-space fluorescence imaging represents an alternative approach to traditional Raman-cooled quantum gas microscopy, where atoms are imaged without confining potentials during the detection process. This paradigm eliminates the technical complexity of maintaining tight trapping and cooling during imaging, potentially enabling faster detection protocols and simplified experimental setups.
 
 The Heidelberg group demonstrated pioneering work in spin-resolved free-space imaging of fermionic $^6$Li atoms \cite{bergschneider_spin-resolved_2018}. Their approach achieved single-atom detection fidelities of up to 99.4(3)\% by collecting approximately 20 fluorescence photons per atom during a 20 $\mu$s exposure. To mitigate acceleration from radiation pressure, they employed two counter-propagating laser beams with alternating 200 ns pulse sequences. Spin resolution was implemented through sequential imaging schemes, where different hyperfine states were addressed in successive exposures by shifting laser frequencies. While this sequential approach enabled spin-selective detection, it inherently limited access to simultaneous spin-spin correlations. Recent developments by the Greiner group have significantly advanced the speed and efficiency of free-space detection protocols \cite{su_fast_2025}. Their implementation achieved detection times as short as 2.4 $\mu$s while maintaining high detection fidelities. The demonstrated capability for parity-projection-free imaging represents a significant advantage, enabling direct counting of multiple atoms per site without light-assisted collisions.
@@ -71,7 +84,8 @@ For experiments requiring small lattice spacings, matter-wave magnification (MWM
 The technical implementation of free-space imaging requires optimization of competing factors: imaging duration must be minimized to prevent significant atomic motion due to photon recoil, while collecting sufficient photons for reliable detection. For $^6$Li atoms, the relatively large recoil energy leads to position spreads of approximately 10 $\mu$m during typical imaging times. Performance trade-offs between free-space and lattice-based approaches depend on experimental priorities: free-space imaging offers superior detection speed, reduced complexity and simultaneous multi-component detection capabilities, while lattice-based methods typically provide better spatial resolution.
 
 
-\textbf{This work.} This work implements spin-resolved free-space imaging for $^6$Li atoms using simultaneous detection of stretched states $|3\rangle$ and $|6\rangle$ with polarization-selective optics. Atoms are transferred to these stretched states, which exhibit nearly pure $m_J = \pm 1/2$ character at high magnetic fields and couple strongly to $\sigma^{\pm}$ polarized light. A polarizing beam splitter after the imaging objective spatially separates the $\sigma^+$ and $\sigma^-$ fluorescence components onto distinct regions of the camera.
+% \textbf{This work.} 
+This work implements spin-resolved free-space imaging for $^6$Li atoms using simultaneous detection of stretched states $|3\rangle$ and $|6\rangle$ with polarization-selective optics. Atoms are transferred to these stretched states, which exhibit nearly pure $m_J = \pm 1/2$ character at high magnetic fields and couple strongly to $\sigma^{\pm}$ polarized light. A polarizing beam splitter after the imaging objective spatially separates the $\sigma^+$ and $\sigma^-$ fluorescence components onto distinct regions of the camera.
 
 The implementation achieves 99\% spin discrimination fidelity while maintaining imaging times of 20 $\mu$s. Compared to previous approaches \cite{bergschneider_spin-resolved_2018}, which required sequential imaging cycles within a single experimental shot, our single-exposure detection simplifies the experimental sequence.
  % and reduces sensitivity to technical fluctuations. While the fundamental capabilities are similar, the streamlined approach facilitates integration with the rapid experimental cycles necessary for high-statistics studies of quantum dynamics.

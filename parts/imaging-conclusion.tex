@@ -1,13 +1,13 @@
 % !TEX root = ../master-thesis.tex
 
-This chapter has detailed the implementation of a spin-resolved free-space imaging system for ${}^6$Li atoms in an optical tweezer array. The approach is tailored to fast-cycle experiments and leverages the intrinsic spacing of the array to bypass the need for sub-micron spatial resolution.
-
+This chapter has detailed the implementation of a spin-resolved free-space imaging system for ${}^6$Li atoms in an optical tweezer array. The approach is tailored to fast-cycle experiments and leverages the intrinsic spacing of the array to bypass the need for sub-micron spatial resolution. 
+% 
 The free-space fluorescence method was motivated both conceptually and practically, with an emphasis on momentum-space dynamics during imaging. Theoretical considerations based on the SSH model support the use of alternating beam sequences to reduce spatial diffusion, thereby improving localization fidelity.
 
-The optical setup includes two independent laser beams driving stretched-state cycling transitions, with modulation handled via AOMs and synchronized control electronics. A distribution board was constructed to combine and route the beams, ensuring symmetric delivery to the atoms.
-
+The optical setup includes two independent laser beams driving stretched-state cycling transitions, with modulation handled via AOMs and synchronized control electronics. A distribution board was constructed to combine and route the beams, ensuring symmetric delivery to the atoms. 
+% 
 The image analysis pipeline applies binarization and spatial filtering to extract single-atom signals from low-flux data. The use of fixed array geometry enables simplified region-of-interest (ROI) analysis and improves classification reliability. All components of the processing chain are implemented in a parallelized, vectorized framework to support high-throughput acquisition.
 
 Spin information is extracted by mapping fluorescence from $\sigma^+$ and $\sigma^-$ transitions to distinct regions on the camera. A per-site classification algorithm assigns spin states based on signal strengths in these regions. Validation against calibrated single-atom counted experiments yields a classification accuracy of approximately 99\% under typical experimental conditions.
-
+% 
 These techniques constitute a fast and reliable imaging solution suitable for experiments requiring spin-resolved readout, and are readily extensible to future array sizes and imaging geometries.

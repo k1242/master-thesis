@@ -3,17 +3,6 @@
 
 % Optical tweezer arrays provide a flexible platform for preparing ultracold atomic systems with site-resolved control. By trapping individual atoms in focused laser beams, it becomes possible to initialize many-body states with controlled geometry, low entropy, and tunable local parameters.
 
-In our setup, a two-dimensional array of tweezers is created using two orthogonal acousto-optic deflectors (AODs). Each AOD diffracts multiple beams along one axis, and their intersection forms the full array. The resulting intensity at site $(i,j)$ factorizes as $P_{ij} = H_i V_j$, where $H_i$ and $V_j$ are set by the drive amplitudes applied to each AOD. This structure simplifies calibration and allows fast control of the entire array using a small number of parameters.
-
-Compared to holographic or lattice-based approaches, the AOD system offers rapid reconfigurability and independent control of individual traps. This enables preparation of custom spin and density patterns, as well as dynamic manipulation during the experimental sequence. Such capabilities are useful, for example, for initializing specific configurations, removing defects, or performing spatially selective operations before loading atoms into an optical lattice for further evolution.
-
-\textbf{AOD operation.} Each AOD consists of a crystal driven by a piezoelectric transducer. An incoming laser beam $(\vc{k}_{\mathrm{in}}, \omega_{\mathrm{in}})$ interacts with the induced acoustic wave $(\vc{q}, \Omega)$ via Bragg diffraction, producing an outgoing beam $(\vc{k}_{\mathrm{out}}, \omega_{\mathrm{out}})$:
-\begin{equation*}
-    \vc{k}_{\mathrm{out}} = \vc{k}_{\mathrm{in}} + \vc{q}, \qquad \omega_{\mathrm{out}} = \omega_{\mathrm{in}} + \Omega.
-\end{equation*}
-The frequency $\Omega$ determines the deflection angle $\theta$ through the Bragg condition, while the amplitude of the RF signal controls the diffracted optical power. Each RF tone can be described by a triple $(\Omega_j, a_j, \varphi_j)$, corresponding to its frequency, amplitude, and phase. Applying a set of such tones to an AOD results in a superposition of multiple diffracted beams, with the amplitude $a_j$ determining the power in each beam and the phase $\varphi_j$ influencing their relative coherence.
-
-
 \begin{figure}
     \centering
     % 
@@ -50,7 +39,38 @@ The frequency $\Omega$ determines the deflection angle $\theta$ through the Brag
 
 
 
-\textbf{Factorized intensity distribution.} 
+In our setup, a two-dimensional array of tweezers is created using two orthogonal acousto-optic deflectors (AODs). Each AOD diffracts multiple beams along one axis, and their intersection forms the full array. The resulting intensity at site $(i,j)$ factorizes (Fig. \ref{fig:factorisability}) as $P_{ij} = H_i V_j$, where $H_i$ and $V_j$ are set by the drive amplitudes applied to each AOD. This structure simplifies calibration and allows fast control of the entire array using a small number of parameters.
+
+Compared to holographic or lattice-based approaches, the AOD system offers rapid reconfigurability and independent control of individual traps. This enables preparation of custom spin and density patterns, as well as dynamic manipulation during the experimental sequence. Such capabilities are useful, for example, for initializing specific configurations, removing defects, or performing spatially selective operations before loading atoms into an optical lattice for further evolution.
+
+% \textbf{AOD operation.} 
+Each AOD consists of a crystal driven by a piezoelectric transducer. An incoming laser beam $(\vc{k}_{\mathrm{in}}, \omega_{\mathrm{in}})$ interacts with the induced acoustic wave $(\vc{q}, \Omega)$ via Bragg diffraction, producing an outgoing beam $(\vc{k}_{\mathrm{out}}, \omega_{\mathrm{out}})$:
+\begin{equation*}
+    \vc{k}_{\mathrm{out}} = \vc{k}_{\mathrm{in}} + \vc{q}, \qquad \omega_{\mathrm{out}} = \omega_{\mathrm{in}} + \Omega.
+\end{equation*}
+The frequency $\Omega$ determines the deflection angle $\theta$ through the Bragg condition, while the amplitude of the RF signal controls the diffracted optical power. Each RF tone can be described by a triple $(\Omega_j, a_j, \varphi_j)$, corresponding to its frequency, amplitude, and phase. Applying a set of such tones to an AOD results in a superposition of multiple diffracted beams, with the amplitude $a_j$ determining the power in each beam and the phase $\varphi_j$ influencing their relative coherence.
+
+
+
+\begin{figure}
+    \centering
+    \includegraphics{fig-py/factorisability.pdf}
+    % \includegraphics{fig-py/factorisability-1.pdf}
+    % \includegraphics{fig-py/factorisability-2.pdf}
+    % \includegraphics{fig-py/factorisability-3.pdf}
+    \caption{
+        \textbf{Characterization of intensity distribution factorization for a $6\times 6$ tweezer array.} 
+        \textit{Left:} Histogram of factorisability values, computed according to Eq.~\eqref{eq:factorisability}, from measured intensity distributions at camera for randomly chosen tweezer amplitudes uniformly distributed in $[0.85, 0.95]$.  
+        \textit{Center:} Relative error distribution between measured intensities $I$ and their singular-value decomposition (SVD) reconstruction $\hat{I} = \Lambda_0 \vc{H}_0 \vc{V}_0\T$. Purple shows overall statistics, while red and blue highlight specific tweezers at positions (5,1) and (2,1), respectively. Typical reconstruction errors are on the order of 1\%.
+        \textit{Right:} Average residuals for each tweezer site, indicating a small systematic non-factorizable component. In this work, intensity balancing was limited by these residual variations of around 1\%. A detailed investigation into the underlying origin of this non-factorizability was beyond the scope of this study.
+        }
+    \label{fig:factorisability}
+\end{figure}
+
+
+
+
+% \textbf{Factorized intensity distribution.} 
 To create 2D arrays, we combine two AODs oriented along orthogonal axes (fig.~\ref{fig:control}a), as described in~\cite{culemann_construction_2024}.
 Each axis is driven by a set of RF tones. In the paraxial approximation, the resulting 2D intensity pattern can be written as a rank-1 product of two vectors:
 \begin{equation*}
@@ -65,7 +85,8 @@ where $H_i$ and $V_j$ correspond to the powers of individual beams generated by 
 \end{equation}
 which provides a natural measure of factorization. For arrays ranging from $2\times2$ to $10\times10$, the factorisability measure $\Lambda_0 / \sum_r \Lambda_r$ is consistently above $0.99$. For the $4\times4$ array used in most of our experiments, we obtain a typical value of $0.997(1)$.
 
-\textbf{Tweezer array control.} The tweezer output beam powers are nonlinear functions of the input amplitudes $\vc{a}$:
+% \textbf{Tweezer array control.} 
+The tweezer output beam powers are nonlinear functions of the input amplitudes $\vc{a}$:
 \begin{equation}
     \label{eq:taylerexp}
     P_j = F_j(\vc{a}) = \cancel{F_j(\vc{0})} + F'_{ji} a_i + \tfrac{1}{2} F''_{j i_1 i_2} a_{i_1} a_{i_2} + \ldots
@@ -73,7 +94,6 @@ which provides a natural measure of factorization. For arrays ranging from $2\ti
 The goal is to control\footnote{
     For amplitudes in the range $a_i \in [0.7, 1.0]$, we find that a linear or quadratic approximation suffices. In practice, we reconstruct the Jacobian matrix $F'_{ji}$ using camera-based calibration, as discussed in Sec.~\ref{subsec:control}.
 } the full matrix $P_{ij}$ using only two sets of parameters: horizontal amplitudes $\vc{h}$ and vertical amplitudes $\vc{v}$. 
-
 It will later be necessary to reconstruct $(H_i, V_j)$ from measured intensity distribution $P_{ij}$, so it is convenient to choose a factorized model $P_{ij} = \Lambda H_i V_j$, with the normalization:
 \begin{equation*}
     \sum_i H_i = \sum_j V_j = 1, \hspace{5 mm} \sum_{ij} P_{ij} = \Lambda.
@@ -93,3 +113,5 @@ which is fully equivalent to a rank-1 SVD of $P_{ij}$.
 It is worth noting that, as shown in Fig.~\ref{fig:control}d, the total scale parameter $\Lambda$ defined in this way is proportional to the total input amplitude, $\sub{a}{sum} = \sum_j h_j + \sum_j v_j$. This effectively decouples local balancing from global power constraints, simplifying the control problem.
 
 % \grey{This allows us to adjust the global scale $\Lambda$ (via a shared AOM or pre-AOD attenuation) and balance individual amplitudes using only two $n$-dimensional vectors.}
+
+

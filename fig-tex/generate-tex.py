@@ -49,9 +49,11 @@ latex_template = r"""
 # name = ["Delta-E", "80muW"]
 # code = [r"$\Delta E$", r"80$\mu$W"]
 
-name = ["t-eq-0", "t-eq-T14", "t-eq-T14T24"]
-code = [r"$t=0$", r"$t=T_1/4$", r"$t=T_1/4+T_2/4$"]
+# name = ["t-eq-0", "t-eq-T14", "t-eq-T14T24"]
+# code = [r"$t=0$", r"$t=T_1/4$", r"$t=T_1/4+T_2/4$"]
 
+name = ["sigma-plus", "sigma-minus"]
+code = [r"$\sigma^+$", r"$\sigma^-$"]
 
 for (n, c) in zip(name, code):
     tex_filename = f"{n}.tex"

@@ -46,6 +46,19 @@ Initial conditions in Monte Carlo simulations are sampled according to experimen
 The subsequent section describes our quantum mechanical simulations employing the split-step method, which complement the classical approach and address quantum-statistical effectsfor fermionic atoms.
 
 
+
+\begin{figure}
+    \centering
+    \includegraphics{fig-py/interference.pdf}
+    \caption{
+        \textbf{Two-fermion dynamics in a 1D harmonic trap: quantum statistics.}
+        Top row: Time evolution of the two-particle correlation function $P_2(x,x')$ for two fermions in a harmonic potential. The characteristic anti-bunching dip along the diagonal reflects fermionic quantum statistics, contrasting the bunching peak expected for bosons. Bottom row: Corresponding single-particle density profiles $n(x)$, which remain indistinguishable from the bosonic case, highlighting the necessity of two-particle correlations to probe quantum statistics.
+        }
+    \label{fig:interference}
+\end{figure}
+
+
+
 \textbf{Split-step method.}
 Complementing the classical Monte Carlo approach, in this work quantum mechanical simulations were employed to capture wavefunction dynamics during matter-wave magnification. Specifically, we utilize the split-step Fourier method, which efficiently solves the time-dependent Schrödinger equation, particularly suitable for systems with spatially varying potentials and wavefunction evolution.
 

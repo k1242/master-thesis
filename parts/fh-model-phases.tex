@@ -33,7 +33,7 @@ A(t \gg \tth) = A(E) + \text{small fluctuations}.
 \label{eq:thermal_limit}
 \end{equation*}
 
-Analyzing Eq. \eqref{eq:At_expanded}, the condition for small fluctuations around a steady-state value requires the off-diagonal matrix elements $\bk{E_k}[\hat{A}]{E_j}$, $k\neq j$, to be sufficiently small. Indeed, due to the large number of off-diagonal terms ($\sim \mathcal{N}^2$), their contributions could, in principle, sum up to large fluctuations. To suppress such fluctuations, one typically assumes these off-diagonal matrix elements to be negligible or effectively random, scaling as $1/\sqrt{\mathcal{N}}$.
+Analyzing Eq.~\eqref{eq:At_expanded}, the condition for small fluctuations around a steady-state value requires the off-diagonal matrix elements $\bk{E_k}[\hat{A}]{E_j}$, $k\neq j$, to be sufficiently small. Indeed, due to the large number of off-diagonal terms ($\sim \mathcal{N}^2$), their contributions could, in principle, sum up to large fluctuations. To suppress such fluctuations, one typically assumes these off-diagonal matrix elements to be negligible or effectively random, scaling as $1/\sqrt{\mathcal{N}}$.
 
 Furthermore, to ensure that the steady-state expectation value $A(E)$ does not depend sensitively on initial conditions, one additional criterion is necessary: the diagonal elements $\bk{E_j}[\hat{A}]{E_j}$ must vary smoothly with energy:
 \begin{equation*}
@@ -60,26 +60,26 @@ To summarize, thermalization in isolated quantum systems, as described by ETH, o
 Localization phenomena in quantum systems provide striking examples of the breakdown of thermalization and transport, even in the absence of interactions. A fundamental example is Anderson localization, first theoretically described by P. W. Anderson in the seminal work \cite{anderson_absence_1958}, originally in the context of non-interacting electrons in disordered lattices. Anderson localization describes the scenario where the presence of disorder in the potential landscape leads to exponential localization of single-particle wavefunctions and consequently prevents diffusion.
 
 Consider the single-particle Hamiltonian describing hopping of a particle on a lattice with nearest-neighbor tunneling amplitude $t$ and site-dependent random potentials $V_i$:
-\begin{equation}
+\begin{equation*}
 \hat{H} = -t \sum_{\langle i,j\rangle} (c_i^\dagger c_j + c_j^\dagger c_i) + \sum_{i} V_i n_i,
 \label{eq:anderson_ham}
-\end{equation}
+\end{equation*}
 where $c_i^\dagger$ and $c_i$ are fermionic creation and annihilation operators on lattice site $i$, and $n_i = c_i^\dagger c_i$ is the number operator. The potentials $V_i$ are typically taken from a random distribution, such as uniformly distributed $V_i \in [-W, W]$, where $W$ characterizes the strength of the disorder.
 
 Anderson demonstrated that in one and two dimensions, any finite amount of disorder is sufficient to localize all eigenstates, rendering them exponentially localized around particular lattice sites. In three-dimensional systems, there exists a critical value of disorder strength, beyond which the system transitions from a metallic (extended) to an insulating (localized) phase \cite{abrahams_50_2010}.
 
 The key consequence of Anderson localization is the absence of diffusion, reflected by the suppression of transport properties and conductivity. A particle initially localized around a particular lattice site remains effectively trapped in a finite spatial region for all times. The wavefunction amplitudes at distant sites decay exponentially:
-\begin{equation}
+\begin{equation*}
 |\psi_j| \sim e^{-|j-j_0|/\xi},
-\end{equation}
+\end{equation*}
 where $\xi$ is known as the localization length, and $j_0$ is the localization center. Importantly, $\xi$ decreases with increasing disorder strength.
 
 From the perspective of quantum dynamics and thermalization, Anderson-localized systems exhibit fundamentally different behavior compared to systems obeying the Eigenstate Thermalization Hypothesis (ETH). Specifically, observables in Anderson-localized systems typically retain memory of their initial conditions indefinitely, as the system cannot redistribute energy or particle number efficiently. Formally, the off-diagonal matrix elements of observables remain substantial and non-randomized, violating the conditions required by ETH for thermalization.
 
 To illustrate this behavior, consider a single-particle observable, such as the local density at site $j$, $\hat{n}_j = c_j^\dagger c_j$. Starting from an initially localized wavefunction $\ket{\psi_0}$, the expectation value of the local density at site $j$ evolves as:
-\begin{equation}
+\begin{equation*}
 n_j(t) = \bk{\psi(t)}[\hat{n}_j]{\psi(t)}.
-\end{equation}
+\end{equation*}
 For a fully Anderson-localized system, this quantity remains close to its initial value for sites near the initial localization center and does not relax toward a homogeneous distribution, contrasting sharply with the ETH scenario.
 
 It is important to emphasize that Anderson localization relies crucially on the absence of interactions. The presence of even weak interactions between particles can significantly alter the localization properties, either destabilizing localization and restoring ergodicity (thermalization) or giving rise to more complex regimes such as many-body localization (MBL), which will be discussed in the next section.
@@ -97,24 +97,24 @@ Summarizing, Anderson localization represents a fundamental example of non-therm
 While Anderson localization establishes the absence of transport in non-interacting systems due to static disorder, the behavior of \emph{interacting} disordered systems remained an open question for decades. The key insight emerged from the realization that localization can persist even in the presence of interactions, giving rise to the phenomenon of many-body localization (MBL) \cite{basko_metalinsulator_2006,nandkishore_many-body_2015,abanin_colloquium_2019}. MBL represents a genuine breakdown of statistical mechanics in isolated quantum systems: despite having strong interactions and high energy density, such systems do not thermalize and retain long-time memory of their initial conditions.
 
 The MBL regime is most naturally studied in the disordered Fermi-Hubbard model, where the Hamiltonian is:
-\begin{equation}
+\begin{equation*}
 \hat{H} = -t \sum_{\langle i, j \rangle, \sigma} (c^\dagger_{i \sigma} c_{j \sigma} + \text{h.c.}) + U \sum_i n_{i \uparrow} n_{i \downarrow} + \sum_{i, \sigma} V_i n_{i \sigma}.
 \label{eq:fh-mbl}
-\end{equation}
+\end{equation*}
 Here, $t$ is the tunneling amplitude, $U$ the on-site interaction strength, and $V_i$ the static disorder potential at site $i$. The presence of both interactions and disorder sets the stage for competition between delocalization (favored by tunneling and interactions) and localization (favored by disorder). Several observable features distinguish MBL from both Anderson localization and thermalization.
 
 % \textbf{Key signatures of MBL.} 
 
 \emph{Absence of thermalization.} Local observables retain memory of their initial values at arbitrarily long times. For example, if the system is initialized in a charge-density wave state, the imbalance between even and odd sites does not relax to zero:
-\begin{equation}
+\begin{equation*}
 \mathcal{I}(t) = \frac{N_\text{even}(t) - N_\text{odd}(t)}{N_\text{even}(t) + N_\text{odd}(t)} \not\rightarrow 0 \quad \text{as} \quad t \to \infty.
-\end{equation}
+\end{equation*}
 Such behavior reflects the failure of the Eigenstate Thermalization Hypothesis (ETH).
 
 \emph{Slow entanglement growth.} Despite the absence of thermalization, MBL systems can exhibit entanglement growth over time. A hallmark of the MBL phase is a \emph{logarithmic} increase of bipartite entanglement entropy:
-\begin{equation}
+\begin{equation*}
 S(t) \sim \log t,
-\end{equation}
+\end{equation*}
 in contrast to linear growth in thermal phases and saturation in Anderson-localized systems. This growth is attributed to dephasing processes mediated by interactions and signals that MBL eigenstates are not strictly product states.
 
 % \emph{Existence of local integrals of motion (LIOMs).} Theoretical studies suggest that the MBL phase is characterized by an extensive set of quasi-local conserved quantities — so-called LIOMs or $l$-bits — which commute with the Hamiltonian and are localized in space \cite{serbyn_local_2013,huse_phenomenology_2014}. These operators explain the persistence of memory and the suppression of transport.
@@ -159,14 +159,14 @@ MBL has been observed in cold atom systems, trapped ions, and superconducting ci
 An important baseline for understanding quantum thermalization and localization is the behavior of clean, non-interacting systems. In the absence of both interactions and disorder, many-body systems may become integrable — that is, they possess an extensive set of conserved quantities that constrain the dynamics. These systems do not thermalize in the conventional sense, as their dynamics remains quasi-periodic and retains detailed memory of the initial state. This regime provides a sharp contrast to both ETH-obeying thermal systems and disorder-induced localized phases.
 
 Consider the Fermi-Hubbard model with $U = 0$ and $V_i = 0$, i.e., a system of non-interacting fermions hopping on a regular lattice:
-\begin{equation}
+\begin{equation*}
 \hat{H}_0 = -t \sum_{\langle i,j \rangle, \sigma} \left( c_{i\sigma}^\dagger c_{j\sigma} + \text{h.c.} \right).
 \label{eq:free_ham}
-\end{equation}
+\end{equation*}
 This model is diagonalizable in momentum space. The occupation number operators in the single-particle eigenbasis, $\hat{n}_k = c_k^\dagger c_k$, commute with the Hamiltonian and with each other, making them integrals of motion. Consequently, the time evolution of any observable is constrained by the conservation of mode occupations:
-\begin{equation}
+\begin{equation*}
 \frac{d}{dt} \hat{n}_k(t) = 0 \quad \text{for all } k.
-\end{equation}
+\end{equation*}
 
 Such a structure leads to \textit{non-ergodic dynamics}: the system does not explore the full Hilbert space compatible with energy conservation. Instead, its evolution is confined to a restricted subspace determined by the initial conditions. As a result, local observables generally exhibit persistent oscillations or approach non-thermal steady states.
 
