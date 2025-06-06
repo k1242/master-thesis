@@ -1,9 +1,10 @@
 % !TEX root = ../master-thesis.tex
 
-
 Experimental investigation of quantum many-body dynamics benefits greatly from accurate and scalable numerical modeling. In the context of disordered Fermi-Hubbard systems, such modeling helps in validating measurement protocols and benchmarking physical observables. However, simulating out-of-equilibrium dynamics in two-dimensional systems remains a formidable task due to the exponential growth of the Hilbert space with system size and the rapid entanglement generation in thermalizing regimes.
 
-To address these challenges, a numerical framework was developed in the course of this work. It supports efficient simulation of unitary dynamics in finite two-dimensional Fermi-Hubbard systems with arbitrary geometries, boundary conditions, and disorder realizations. The framework combines two complementary computational strategies:
+To address these challenges, a numerical framework was developed in the course of this work. While existing packages such as QuSpin~\cite{weinberg_quspin_2019} provide similar functionality for time evolution of fermionic systems through both exact diagonalization and Krylov subspace methods, they lack GPU acceleration capabilities that are essential for the system sizes relevant to this study. The framework developed here adapts these established computational methods specifically for the experimental parameters and geometries encountered in tweezer array experiments, with particular emphasis on GPU-accelerated implementations to enable simulation of larger system sizes within reasonable computational time.
+
+The framework supports efficient simulation of unitary dynamics in finite Fermi-Hubbard systems with arbitrary geometries, boundary conditions, and disorder realizations. It supports two complementary computational strategies:
 
 \textit{Exact diagonalization (ED).}
 For systems with Hilbert space dimension up to $\mathcal{N} \sim 10^4$, full diagonalization of the Hamiltonian $\hat{H}$ allows direct computation of all eigenvalues ${\varepsilon_j}$ and eigenstates ${\ket{E_j}}$. Time evolution of an initial state $\ket{\psi_0}$ is then given by:
@@ -13,15 +14,14 @@ For systems with Hilbert space dimension up to $\mathcal{N} \sim 10^4$, full dia
 This approach gives access to long-time dynamics, spectral statistics, entanglement entropy, and steady-state observables with machine precision. 
 
 \textit{Krylov-based time evolution.}
-For larger systems ($\dim \mathcal{H} \sim 10^4$–$10^9$), storing the full spectrum becomes infeasible. Instead, the time-evolution operator $e^{-i \hat{H} t}$ is approximated via Krylov subspace projection methods, such as the Lanczos or Arnoldi algorithm \cite{saad_analysis_1992,hochbruck_krylov_1997}. The idea is to construct a Krylov basis ${ \ket{\psi}, \hat{H} \ket{\psi}, \hat{H}^2 \ket{\psi}, \ldots }$ and evolve the system within this subspace:
+For larger systems ($\dim \mathcal{H} \sim 10^4$–$10^9$), storing the full spectrum becomes infeasible. Instead, the time-evolution operator $e^{-i \hat{H} t}$ is approximated via Krylov subspace projection methods \cite{weinberg_quspin_2019}, such as the Lanczos or Arnoldi algorithm \cite{saad_analysis_1992,hochbruck_krylov_1997}. The idea is to construct a Krylov basis ${ \ket{\psi}, \hat{H} \ket{\psi}, \hat{H}^2 \ket{\psi}, \ldots }$ and evolve the system within this subspace:
 \begin{equation}
 \ket{\psi(t)} \approx V_m e^{-i H_K t} V_m^\dagger \ket{\psi_0},
 \end{equation}
 where $V_m$ is an orthonormal matrix spanning the Krylov subspace and $H_K$ is the projected Hamiltonian. 
-% This method allows simulation of moderately long time scales (e.g., up to $t \sim 100 / t$), depending on entanglement growth and system properties.
-
 
 The Krylov solver implemented here supports: {Fixed particle number sectors}, ensuring efficient memory usage by restricting to Hilbert space blocks with specified $(N_\uparrow, N_\downarrow)$; {Arbitrary connectivity graphs}, allowing modeling of open, periodic, or custom geometries; {GPU acceleration}, using PyTorch backends to accelerate sparse matrix-vector operations and state evolution on GPUs.
+
 
 % {Monitoring of observables}, including density profiles $\langle n_i(t) \rangle$, spin observables $\langle \sigma^z_i(t) \rangle$, two-point correlators, and global quantities such as imbalance or return probabilities.
 

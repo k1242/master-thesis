@@ -1,7 +1,5 @@
 % !TEX root = ../master-thesis.tex
 
-
-
 \begin{figure}
     \centering
     \addletter{140}{a}
@@ -17,10 +15,7 @@
     \label{fig:sshmodel}
 \end{figure}
 
-
-Understanding the fundamental limitations and optimal strategies for free-space imaging requires a theoretical framework that captures the interplay between photon scattering, momentum transfer, and spatial resolution. This section develops a model based on the Su-Schrieffer-Heeger (SSH) Hamiltonian to explain the motivation for alternating beam sequences and to estimate the characteristic resolution limits of the imaging scheme.
-
-
+Understanding the fundamental limitations and optimal strategies for free-space imaging requires a theoretical framework that captures the interplay between photon scattering, momentum transfer, and spatial resolution. This section applies the Su-Schrieffer-Heeger (SSH) model developed in this context by \cite{su_fast_2025} to explain the motivation for alternating beam sequences and to estimate the characteristic resolution limits of the imaging scheme.
 
 % \textbf{Recoil heating and momentum diffusion.} 
 Although $^6$Li is a light atom and experiences relatively large momentum recoil during scattering, its broad D2 transition at $\lambda = 671$ nm allows for rapid photon emission. The typical recoil velocity is given by $v_\mathrm{rec} = h/(m\lambda)$, where $m$ is the atomic mass of $^6$Li and $\lambda$ is the wavelength of the imaging light. As the atom scatters photons at a rate $\Gamma$, each with random emission direction, it undergoes a random walk in momentum space, resulting in spatial diffusion during the imaging pulse.
@@ -36,9 +31,8 @@ where $t$ is the total exposure time. For a fixed number of scattered photons $N
 \end{equation}
 This scaling highlights the trade-off between collecting more fluorescence photons and maintaining spatial resolution. In our system, with $N_\mathrm{ph} \approx 300$ scattered photons (of which approximately 10\% are detected by the camera), the resulting diffusion is on the scale of 11 $\mu$m, which sets the practical limit for spatial resolution in free-space imaging of $^6$Li atoms.
 
-
 % \textbf{SSH model.} 
-The scattering dynamics of a freely moving atom illuminated by resonant counter-propagating beams can be understood as a momentum-space quantum walk that maps onto the Su-Schrieffer-Heeger (SSH) model. In the standard SSH model, particles hop between two sublattices with alternating coupling strengths:
+The scattering dynamics of a freely moving atom illuminated by resonant counter-propagating beams can be understood as a momentum-space quantum walk that maps onto the SSH model. In the standard SSH model, particles hop between two sublattices with alternating coupling strengths:
 \begin{equation}
 H = t_1 \sum_n |n,B\rangle \langle n,A| + t_2 \sum_n |n+1,A\rangle \langle n,B| + \text{h.c.}
 \end{equation}
@@ -54,5 +48,5 @@ The solution involves alternating the two beams rather than applying them simult
 \begin{equation}
 i\hbar \partial_t \rho = [H(t), \rho] + \mathcal{L}[\rho],
 \end{equation}
-where $\mathcal{L}$ describes spontaneous emission. Numerical simulations demonstrate that alternating beam sequences significantly improve imaging fidelity compared to single-beam or simultaneous two-beam configurations (Fig.~\ref{fig:sshmodel}) as also was shown in \cite{su_fast_2025,bergschneider_spin-resolved_2018}.
-The theoretical framework developed here provides the foundation for the experimental implementation described in the following sections, where the alternating beam protocol is realized using acousto-optic modulators.
+where $\mathcal{L}$ describes spontaneous emission. Numerical simulations performed in this work demonstrate that alternating beam sequences significantly improve imaging fidelity compared to single-beam or simultaneous two-beam configurations (Fig.~\ref{fig:sshmodel}) as also was shown in \cite{su_fast_2025,bergschneider_spin-resolved_2018}.
+The theoretical framework provides the foundation for the experimental implementation described in the following sections, where the alternating beam protocol is realized using acousto-optic modulators.

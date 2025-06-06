@@ -1,3 +1,16 @@
 % !TEX root = ../master-thesis.tex
 
-...
+This section has presented the development and characterization of a complete tweezer array system for deterministic preparation of fermionic quantum states. The implemented approach enables preparation of arbitrary spin- and site-resolved occupation patterns through a sequence of global and spin-selective spilling operations, representing the first demonstration of programmable spin-selective state preparation in two-dimensional fermionic tweezer arrays.
+
+% \textbf{Current capabilities and limitations.}
+The preparation protocol achieves doublon preparation with 90\% fidelity using the spilling technique combined with single-value feedback balancing. Complete implementation of arbitrary pattern preparation awaits installation of a microwave antenna for $|1\rangle \leftrightarrow |2\rangle$ spin-flip transitions. The primary experimental limitations are magnetic field stability, which affects both spin manipulation and spilling precision, and detection fidelity of the $|1\rangle \to |6\rangle$ imaging transition (95\%). Future improvements in magnetic field stabilization are expected to enable higher preparation fidelity.
+
+% \textbf{Detection methodology.}
+While the spin-resolved imaging system provides single-shot discrimination of atomic spin states, the combined preparation and imaging protocol currently lacks sufficient photon collection to distinguish between single atoms and doublons reliably. To characterize preparation fidelity independently of imaging limitations, an alternative detection scheme using single-atom counting after MOT recapture was developed. This method achieves greater than 99\% discrimination accuracy for discrete atom numbers and provides reliable calibration of preparation protocols.
+
+% \textbf{Technical contributions.}
+Key developments in this work include SVD-based control of crossed AODs (which potentially remains effective under significant crosstalk conditions), the single-value feedback protocol for uniform tweezer depth balancing, and the additional spilling method for arbitrary pattern preparation using only AOD-based intensity control. Current capabilities allow arbitrary occupation patterns for one spin state and selected subsets for the second spin state.
+
+% \textbf{Future prospects.}
+The developed platform establishes the experimental foundation for bottom-up quantum simulation of strongly correlated fermionic systems. The deterministic state preparation capabilities enable systematic investigation of quantum many-body dynamics in future Fermi-Hubbard experiments. The ability to prepare arbitrary initial states with single-site and single-spin control provides access to configurations that would be statistically unlikely under thermal loading, opening new possibilities for programmable quantum simulation of strongly correlated matter.
+

@@ -1,6 +1,6 @@
 % !TEX root = ../master-thesis.tex
 
-\textbf{Context and Motivation.} In the context of this experimental work, deterministic preparation of atomic patterns in optical tweezer arrays is realized through sequential spilling operations, enabled by a simplified optical setup based exclusively on two orthogonal acousto-optic deflectors (AOD). Unlike more complex approaches employing spatial light modulators (SLM) or digital micromirror devices (DMD), the AOD-based setup restricts the accessible intensity patterns to products of one-dimensional horizontal and vertical profiles:
+\textbf{Context and Motivation.} In the context of this experimental work, deterministic preparation of atomic patterns in optical tweezer arrays is realized through sequential spilling operations, enabled by a simplified optical setup based exclusively on two orthogonal AODs. Unlike more complex approaches employing spatial light SLMs or DMDs, the AOD-based setup restricts the accessible intensity patterns to products of one-dimensional horizontal and vertical profiles:
 \begin{equation*}
 P_{ij} = H_i V_j.
 \end{equation*}
@@ -57,7 +57,7 @@ In practice, employing a SAT solver (such as PycoSAT) proved efficient and relia
 % , thereby minimizing cycle times and enhancing overall preparation fidelity.
 
 
-\textbf{Performance.} To solve the formulated Boolean satisfiability (SAT) problem corresponding to the optimal Boolean matrix factorization, the PycoSAT solver was employed. The workflow consists of translating the EBMF task into conjunctive normal form (CNF) and incrementally increasing the candidate rank $r$ until the solver identifies a valid factorization. The minimal rank $r$ obtained through this procedure directly defines the minimal number of spilling steps required experimentally.
+\textbf{Performance.} To solve the formulated SAT problem corresponding to the optimal Boolean matrix factorization, the PycoSAT solver was employed. The workflow consists of translating the EBMF task into CNF and incrementally increasing the candidate rank $r$ until the solver identifies a valid factorization. The minimal rank $r$ obtained through this procedure directly defines the minimal number of spilling steps required experimentally.
 
 
 \begin{table}

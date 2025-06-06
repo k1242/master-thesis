@@ -17,6 +17,10 @@ def plot_img(ax, img):
     ax.set_xticks([])
     ax.set_yticks([])
 
+    x0, y0 = 50, 495
+    ax.plot([x0, x0 + 200/1.6], [y0, y0], color=(0.5, 0.5, 0.5), lw=1.5)
+    ax.text(x0 + 100/1.6, y0 - 60, r'0.2 mm', ha='center', va='top', fontsize=8, color=(0.5, 0.5, 0.5))
+
 data = np.load("../data/movement/data.npz")
 
 x_scale = 36.6 / 5.6
