@@ -10,16 +10,20 @@
 \begin{document}
 
 \input{settings/set}
-\input{settings/heading}
 
+\pagenumbering{roman}
+
+\input{settings/title-page} 
+
+\input{settings/abstract} \newpage
+\input{settings/acknowledgements} \newpage
+\input{settings/contents} \newpage
+\input{settings/listoffigures} \newpage
+
+\pagenumbering{arabic}
 
 % \input{parts/notes} \newpage
 
-
-% \input{parts/fig} \newpage
-
-
-\newpage
 % --------------------------------------------------------------------------------------
 \section{Introduction} \label{sec:intro}
 % --------------------------------------------------------------------------------------
@@ -117,7 +121,7 @@
 
 \newpage
 % --------------------------------------------------------------------------------------
-\section{Fermi-Hubbard model: numerical approaches and simulations} \label{sec:fhmodel}
+\section{Fermi-Hubbard model: numerical approaches} \label{sec:fhmodel}
 % --------------------------------------------------------------------------------------
 
 \subsection{Introduction}
@@ -171,7 +175,7 @@
 \newpage
 \bibliographystyle{plain}
 \bibliography{master-thesis.bib}
-
+\addcontentsline{toc}{section}{References}
 
 \end{document}
 

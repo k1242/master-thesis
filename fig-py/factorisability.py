@@ -35,7 +35,7 @@ axs[1].hist(I_err_rel[:, 1, 0] * 1e2, bins=bins, color=red, density=True)
 axs[1].hist(I_err_rel.flatten() * 1e2, bins=bins, color=purple, alpha=0.75, density=True)
 axs[1].set_xlabel(r'Relative error $(\hat{I}-I)/I$, \%')
 axs[1].set_ylabel('Probability density')
-im = axs[2].matshow(I_err_rel.mean(axis=0) * 1e2, cmap=bwr, vmin=-1.25, vmax=1.25)
+	
 
 cbar = fig.colorbar(im, cax=fig.add_axes([0.92, 0.14, 0.01, 0.71]))
 cbar.ax.text(

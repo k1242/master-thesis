@@ -25,7 +25,7 @@
     \addletter{115}{e}
     \includegraphics{fig-py/crosstalk-camera-res.pdf}
     % 
-    \caption{
+    \caption[Tweezer array control using orthogonal AODs]{
         \textbf{Tweezer array control using orthogonal AODs.}
         (a) Experimental setup: two orthogonal AODs generate a 2D tweezer array. The applied harmonic amplitudes $h_i$, $v_j$ define the output intensities $H_i = F_H(h)$ and $V_j = F_V(v)$ in horizontal and vertical directions, respectively. 
         (b) Crosstalk matrix $F'$ reconstructed via linear regression from camera images, showing how modulation of one harmonic affects others. 
@@ -58,7 +58,7 @@ The frequency $\Omega$ determines the deflection angle $\theta$ through the Brag
     % \includegraphics{fig-py/factorisability-1.pdf}
     % \includegraphics{fig-py/factorisability-2.pdf}
     % \includegraphics{fig-py/factorisability-3.pdf}
-    \caption{
+    \caption[Characterization of intensity distribution factorization for a $6\times 6$ tweezer array]{
         \textbf{Characterization of intensity distribution factorization for a $6\times 6$ tweezer array.} 
         \textit{Left:} Histogram of factorisability values, computed according to Eq.~\eqref{eq:factorisability}, from measured intensity distributions at camera for randomly chosen tweezer amplitudes uniformly distributed in $[0.85, 0.95]$.  
         \textit{Center:} Relative error distribution between measured intensities $I$ and their singular-value decomposition (SVD) reconstruction $\hat{I} = \Lambda_0 \vc{H}_0 \vc{V}_0\T$. Purple shows overall statistics, while red and blue highlight specific tweezers at positions (5,1) and (2,1), respectively. Typical reconstruction errors are on the order of 1\%.

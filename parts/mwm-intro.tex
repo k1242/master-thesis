@@ -14,7 +14,7 @@ The principle underlying MWM can be understood from the perspective of phase-spa
     \includegraphics{fig-ai/mwm-scheme.pdf}
     \addletter{130}{b}
     \includegraphics{fig-py/mwm.pdf}
-    \caption{
+    \caption[Matter-wave magnification scheme and ROI adaptation]{
     \textbf{Matter-wave magnification scheme and ROI adaptation.}
     (a) Conceptual illustration of matter-wave magnification: atoms initially localized at the slope of a harmonic potential with frequency $\omega_1$ roll towards the center during a quarter period. Subsequent expansion in a shallower harmonic potential with frequency $\omega_2$ increases their spatial separation by the factor $\omega_1/\omega_2$.
     (b) Initial atom distribution (left) and magnified pattern after propagation (right), demonstrating distortion due to anharmonicities. Voronoi diagrams adapt the regions of interest (ROI) to these distorted patterns, improving atom detection fidelity.
@@ -25,7 +25,6 @@ The principle underlying MWM can be understood from the perspective of phase-spa
 However, practical implementation of MWM faces several challenges, notably potential anharmonicities that cause distortions of the magnified atomic pattern. These distortions necessitate adaptive methods for defining regions of interest (ROI) to ensure accurate atom detection. In this work, the application of Voronoi diagrams was introduced to adjust ROI based on actual atomic distributions post-magnification, thus potentially enhancing detection fidelity.
 
 % The following sections detail the numerical methods developed and applied within this thesis to simulate the wavefunction dynamics and classical trajectories of atoms undergoing MWM. We discuss explicitly our numerical approach combining Monte Carlo simulations with the Runge-Kutta 4th order method (RK4), alongside quantum wavefunction evolution techniques via the split-step method. We further elaborate on how the Voronoi-based ROI adaptation provides a robust and efficient approach to handle the inherent spatial distortions introduced by anharmonic potentials.
-
 
 
 

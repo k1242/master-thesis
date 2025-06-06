@@ -47,7 +47,7 @@ Figure~\ref{fig:svf}a shows the process of applying the SVF protocol to a $6 \ti
     \includegraphics{fig-py/svf-avg.pdf}
     \addletter{170}{b}
     \includegraphics{fig-py/svf.pdf}
-    \caption{
+    \caption[Single-value feedback optimization for a $6 \times 6$ tweezer array]{
         \textbf{Single-value feedback (SVF) optimization for a $6 \times 6$ tweezer array.}
         (a) Relative deviation of effective powers $P_j$ across the array during successive SVF steps, quantified as $\mathrm{std}(P_j)/\langle P_j \rangle$. The initial point corresponds to camera-based balancing; subsequent iterations apply SVF with feedback rates $\gamma = 1/20$ and $\gamma = 1/40$. Further iterations did not yield statistically significant improvements. 
         (b) Retrieved horizontal powers $H_i$ and vertical powers $V_j$ (top and third rows), along with corresponding deviations of driving amplitudes from their final target values, $h - h^*$ and $v - v^*$. The recovered $H$, $V$ vectors are extracted from the photon count matrix $M_{ij}$ using factorization as described in \eqref{uv-decomposition}.
