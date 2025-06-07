@@ -2,8 +2,9 @@
 
 Experimental investigation of quantum many-body dynamics benefits greatly from accurate and scalable numerical modeling. In the context of disordered Fermi-Hubbard systems, such modeling helps in validating measurement protocols and benchmarking physical observables. However, simulating out-of-equilibrium dynamics in two-dimensional systems remains a formidable task due to the exponential growth of the Hilbert space with system size and the rapid entanglement generation in thermalizing regimes.
 
-To address these challenges, a numerical framework was developed in the course of this work. While existing packages such as QuSpin~\cite{weinberg_quspin_2019} provide similar functionality for time evolution of fermionic systems through both exact diagonalization and Krylov subspace methods, they lack GPU acceleration capabilities that are essential for the system sizes relevant to this study. The framework developed here adapts these established computational methods specifically for the experimental parameters and geometries encountered in tweezer array experiments, with particular emphasis on GPU-accelerated implementations to enable simulation of larger system sizes within reasonable computational time.
-
+To address these challenges, a numerical framework\footnote{
+	The numerical framework is publicly available at \url{https://github.com/k1242/hbar}.
+} was developed in the course of this work. While existing packages such as QuSpin~\cite{weinberg_quspin_2019} provide similar functionality for time evolution of fermionic systems through both exact diagonalization and Krylov subspace methods, they lack GPU acceleration capabilities that are essential for the system sizes relevant to this study. The framework developed here adapts these established computational methods specifically for the experimental parameters and geometries encountered in tweezer array experiments, with particular emphasis on GPU-accelerated implementations to enable simulation of larger system sizes within reasonable computational time.
 The framework supports efficient simulation of unitary dynamics in finite Fermi-Hubbard systems with arbitrary geometries, boundary conditions, and disorder realizations. It supports two complementary computational strategies:
 
 \textit{Exact diagonalization (ED).}
