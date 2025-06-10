@@ -23,17 +23,3 @@ The principle underlying MWM can be understood from the perspective of phase-spa
 \end{figure}
 
 However, practical implementation of MWM faces several challenges, notably potential anharmonicities that cause distortions of the magnified atomic pattern. These distortions necessitate adaptive methods for defining regions of interest (ROI) to ensure accurate atom detection. In this work, the application of Voronoi diagrams was introduced to adjust ROI based on actual atomic distributions post-magnification, thus potentially enhancing detection fidelity.
-
-% The following sections detail the numerical methods developed and applied within this thesis to simulate the wavefunction dynamics and classical trajectories of atoms undergoing MWM. We discuss explicitly our numerical approach combining Monte Carlo simulations with the Runge-Kutta 4th order method (RK4), alongside quantum wavefunction evolution techniques via the split-step method. We further elaborate on how the Voronoi-based ROI adaptation provides a robust and efficient approach to handle the inherent spatial distortions introduced by anharmonic potentials.
-
-
-
-% MWM был подробно разобран в контексте нашего эксперимента в \cite{huang_construction_2024}. В рамках этой работы хочу коснуться моментов которые выполнялись в рамках этой работы: наработки в численном моделировани и особенности от MWM в imaging. В контексте численного моделирования это monte carlo with RK4 for 2D MWM with gpu support, split step method for Scrodinger equation in 1D and 2D (нет нужны в многочастичности, так как частицы в MWM будут в точке невзаимодействия, так что хорошо описываются классически. Но можно и квантово, но с точки зрения средней плотности всё ещё достаточно сумм |psi|^2 а вот для относительного положения уже пригодится кванты если важна фермионность как в примере на рисунке. В целом можно и для сколько угодно частиц строить такие штуки с DPP \red{см Аппендикс}) Так как MWM может вызывать некоторые distortion регулярной решётки, то возникает вопрос выбора ROI для каждого твизера, естественным решением которого будут диаграммы Вороного. 
-
-% Position and Momentum Correlations \cite{bergschneider_experimental_2019}
-
-% Про производительность моего 2D monte carlo кода: 4s (A100 for 1k rk4 steps and 1.6e6 particles)
-
-
-
-

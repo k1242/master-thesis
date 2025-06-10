@@ -1,47 +1,5 @@
 % !TEX root = ../master-thesis.tex
 
-
-% А тут расскажу про модель, которую сделал и что мы можем в нашем эксперименте наблюдать. 
-
-
-
-% The entanglement entropy between two halves of a $4 \times 4$ Fermi-Hubbard system with $N_\uparrow = N_\downarrow = 2$ is bounded by the logarithm of the Schmidt rank of the reduced density matrix $\rho^A$. Due to particle number conservation, $\rho^A$ decomposes into orthogonal blocks labeled by $(N_\uparrow^{(A)}, N_\downarrow^{(A)}) = (k, l)$. The maximal rank of each block is given by the minimal dimension of the matching sectors in subsystems $A$ and $B$. Thus, the total maximal rank is
-
-% \begin{equation*}
-% R_{\max} = \sum_{k=0}^2 \sum_{l=0}^2 \min\left[ \binom{8}{k} \binom{8}{l}, \binom{8}{2-k} \binom{8}{2-l} \right] = 154.
-% \end{equation*}
-
-% The corresponding maximal entropy is
-
-% \begin{equation*}
-% S_{\max} = \ln(R_{\max}) = \ln(154) \approx 5.04.
-% \end{equation*}
-
-
-% cuda (A100):
-
-% dim=1.44 * 10^4, 28ms на создание гамильтониана;  (N_up=N_down=2)
-% 	для 100 сингулярных значения в random SVD: 24ms
-% 	ED: 3.5s на диагонализацию : + 0.8ms на вычисление psi в момент времени t; 
-% 	Krylov: 8ms на step -- получение psi в следующий момент времени; 
-
-% dim=3.3124 * 10^6, 59ms на создание гамильтониана; (N_up=N_down=4)
-% 	для 100 сингулярных значения в random SVD: 4.7s
-% 	Krylov: 17ms на step (with K=5); 33ms на step (with K=10)
-
-% dim=1.656369 * 10^8, 110ms на создание гамильтониана; (N_up=N_down=8)
-% 	Krylov: 1.06s на step (with K=5); 2.1s на step (with K=10)
-
-
-
-% cpu (Intel Xeon Gold 6330):
-
-% dim=3.3124 * 10^6, 93ms на создание гамильтониана; (N_up=N_down=4)
-% 	для 100 сингулярных значения в random SVD: 32s
-% 	Krylov: 0.708s на step (with K=5); 1.45s на step (with K=10)
-
-
-
 % \textbf{Algorithmic implementation}.
 The numerical toolbox is designed to simulate dynamics governed by the Fermi-Hubbard Hamiltonian on arbitrary lattice geometries. The Hamiltonian considered is generally given by \eqref{eq:fh-mbl}. At the core of the implementation is the compact representation of fermionic many-body states using bitwise encoding. Specifically, the occupation number of each lattice site by spin-up and spin-down fermions is stored in two separate binary integers, significantly reducing memory consumption and enhancing computational speed. Each basis state is thus represented as a pair of bit patterns, enabling rapid evaluation of physical operators via bitwise logic. The numbers of spin-up particles, $N_\uparrow$, and spin-down particles, $N_\downarrow$, are considered to be conserved.
 
